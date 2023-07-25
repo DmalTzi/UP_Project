@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Test1</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <h1>Name project</h1>
+    </nav>
+    <div class="container">
+        <h1>แบบประเมินอาการ</h1>
+        <form class="login-box" action="get">
+            <div class="sub-login-box">
+                <div class="sub-sub-login-box">
+                    <label for="Level">อายุ</label>
+                    <input type="text" name="Level" placeholder="">
+                </div>
+                <div class="sub-sub-login-box">
+                    <label for="Number">น้ำหนัก</label>
+                    <input type="text" name="Number" maxlength="2">
+                </div>
+            </div>
+            <div class="main-login-box">
+                <label for="StudentNumber">อุณหภูมิร่างกาย</label>
+                <input type="text" name="StudentNumber" placeholder="" minlength="5" maxlength="5" required>
+                <label for="StudentName">อาการที่พบ</label>
+                <input type="text" name="StudentName" placeholder="" required>
+            </div>
+            <div class="container-slider">
+                <label for="range">ระดับความปวดของอาการ</label>
+                <div class="box-slider">
+                    <div class="slider">
+                        <input name="range" id="slider-input"type="range" min="0" max="10" value="5">
+                    </div>
+                    <div class="slider-value">10</div>
+                </div>
+                <script>
+                    const slider = document.querySelector("#slider-input")
+                    const value = document.querySelector(".slider-value")
+                    value.textContent = slider.value;
+                    slider.oninput = function(){
+                        value.textContent = this.value;
+                    }
+                </script>
+            </div>
+            <!-- <input id="slider-input"type="range" min="0" max="10" value="5"> -->
+            <button class="login-btn">ยืนยัน</button>
+        </form>
+    </div>
+    <footer class="footer">
+    </footer>
+</body>
+</html>

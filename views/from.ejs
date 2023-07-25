@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Test1</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <h1>Name Project</h1>
+    </nav>
+    <div class="container">
+        <h1>แบบประเมินอาการ</h1>
+        <form class="login-box" method="post" action="/student_from">
+            <div class="sub-login-box">
+                <div class="sub-sub-login-box">
+                    <label for="Age">อายุ</label>
+                    <input type="text" name="Age" maxlength="2" required>
+                </div>
+                <div class="sub-sub-login-box">
+                    <label for="Weight">น้ำหนัก</label>
+                    <input type="text" name="Weight" maxlength="5" required>
+                </div>
+            </div>
+            <div class="main-login-box">
+                <label for="Temp">อุณหภูมิร่างกาย</label>
+                <input type="text" name="Temp" maxlength="5">
+                <label for="Symptom">อาการที่พบ</label>
+                <input type="text" name="Symptom" placeholder="" required>
+            </div>
+            <div class="container-slider">
+                <label for="range">ระดับความปวดของอาการ</label>
+                <div class="box-slider">
+                    <div class="slider">
+                        <input type="range"  id="slider-input" name="Range" min="0" max="10" value="5" required>
+                    </div>
+                    <div class="slider-value">10</div>
+                </div>
+                <script>
+                    const slider = document.querySelector("#slider-input")
+                    const value = document.querySelector(".slider-value")
+                    value.textContent = slider.value;
+                    slider.oninput = function(){
+                        value.textContent = this.value;
+                    }
+                </script>
+            </div>
+            <!-- <input id="slider-input"type="range" min="0" max="10" value="5"> -->
+            <button class="login-btn">ยืนยัน</button>
+        </form>
+    </div>
+    <footer class="footer">
+    </footer>
+</body>
+</html>
