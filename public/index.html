@@ -21,13 +21,33 @@
             <div class="main-login-box">
                 <label for="StudentNumber">เลขประจำตัวนักเรียน</label>
                 <input type="text" name="StudentNumber" placeholder="" minlength="5" maxlength="5" required>
-                <label for="StudentName">ชื่อ - นานสกุล</label>
-                <input type="text" name="StudentName" placeholder="" required>
+                <!-- <label for="StudentName">ชื่อ - นานสกุล</label>
+                <input type="text" name="StudentName" placeholder="" required> -->
             </div>
             <div class="sub-login-box">
                 <div class="sub-sub-login-box">
                     <label for="Level">ระดับชั้น</label>
-                    <input type="text" name="Level" placeholder="">
+                    <select name="Class" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="sub-sub-login-box">
+                    <label for="Level">ระดับชั้น</label>
+                    <select name="Room" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">6</option>
+                        <option value="8">6</option>
+                    </select>
                 </div>
                 <div class="sub-sub-login-box">
                     <label for="Number">เลขที่</label>
