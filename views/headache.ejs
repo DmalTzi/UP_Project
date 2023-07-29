@@ -9,32 +9,20 @@
 </head>
 <body>
     <nav class="nav-bar">
-        <h1>Name Project</h1>
+        <h1>Name project</h1>
     </nav>
     <div class="container">
-        <h1>แบบประเมินอาการ</h1>
-        <form class="login-box" method="post" action="/student_from">
-            <div class="sub-login-box">
-                <div class="sub-sub-login-box">
-                    <label for="Age">อายุ</label>
-                    <input type="text" name="Age" maxlength="2" required>
-                </div>
-                <div class="sub-sub-login-box">
-                    <label for="Weight">น้ำหนัก</label>
-                    <input type="text" name="Weight" maxlength="5" required>
-                </div>
-            </div>
-            <div class="main-login-box">
-                <label for="Temp">อุณหภูมิร่างกาย</label>
-                <input type="text" name="Temp" maxlength="5">
-                <label for="Symptom">อาการที่พบ</label>
-                <input type="text" name="Symptom" placeholder="" required>
-            </div>
+        <div class="section-title">
+            <h1>อาการ</h1>
+            <p>ปวดหัว / มีไข้</p>
+        </div>
+        <form class="login-box" action="/student_from" method="post">
             <div class="container-slider">
-                <label for="range">ระดับความปวดของอาการ</label>
+                <input type="text" name="Symptom" value="ปวดหัว" hidden>
+                <label for="Range">ระดับความปวดของอาการ</label>
                 <div class="box-slider">
                     <div class="slider">
-                        <input type="range"  id="slider-input" name="Range" min="0" max="10" value="5" required>
+                        <input name="Range" id="slider-input"type="range" min="0" max="10" value="5">
                     </div>
                     <div class="slider-value">10</div>
                 </div>
