@@ -45,6 +45,14 @@ router.get('/promise',(req,res)=>{
     res.render('promise')
 })
 
+router.get('/emergency',(req,res)=>{
+    res.render('emergency')
+})
+
+router.post('/emergencysend',(req,res)=>{
+    res.render("emergencysend")
+})
+
 let time =  10
 
 const datafirst = function(StudentNumberI,ClassI,RoomI,NumberI){

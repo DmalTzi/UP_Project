@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Test1</title>
+</head>
+<body>
+    <%- include('nav') %>
+    <div class="container">
+        <!-- <h1>สำหรับนักเรียน</h1> -->
+        <form class="login-box" action="/emergencysend" method="post">
+            <div class="main-login-box">
+                <label for="StudentNumber">ชื่อ - นามสกุลผู้ประสบเหตุ</label>
+                <input type="text" name="EmergencyName" placeholder="ตัวอย่าง : นาย สมพงษ์ ใจดี" required>
+                <label for="TelEmergency">เบอร์โทรติดต่อ</label>
+                <input type="text" name="Tel" placeholder="ตัวอย่าง : 0923334444" required>
+                <label for="Where">สถานที่เกิดเหตุ</label>
+                <input type="text" name="WhereEvergency" placeholder="ตัวอย่าง : ใต้บาดาล" required>
+                <label for="StudentName">อาการของผู้ประสบเหตุ</label>
+                <input type="text" name="WhatHappen" placeholder="ตัวอย่าง : หายใจไม่ออก" required>
+            </div>
+            <button class="login-btn">ยืนยัน</button>
+        </form>
+    </div>
+    <footer class="footer">
+    </footer>
+</body>
+</html>
