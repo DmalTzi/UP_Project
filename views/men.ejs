@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Test1</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <h1>Name project</h1>
+    </nav>
+    <div class="container">
+        <div class="section-title">
+            <h1>อาการ</h1>
+            <p>ปวดประจำเดือน</p>
+        </div>
+        <form class="login-box" action="/student_from" method="post">
+            <div class="container-slider">
+                <input type="text" name="Symptom" value="ปวดประจำเดือน" hidden>
+                <label for="Range">ระดับความปวดของอาการ</label>
+                <div class="box-slider">
+                    <div class="slider">
+                        <input name="Range" id="slider-input" type="range" min="0" max="10" value="5">
+                    </div>
+                    <div class="slider-value">10</div>
+                </div>
+                <script>
+                    const slider = document.querySelector("#slider-input")
+                    const value = document.querySelector(".slider-value")
+                    value.textContent = slider.value;
+                    slider.oninput = function(){
+                        value.textContent = this.value;
+                    }
+                </script>
+            </div>
+            <button class="login-btn">ยืนยัน</button>
+        </form>
+    </div>
+    <footer class="footer">
+    </footer>
+</body>
+</html>

@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
     <title>Test1</title>
 </head>
 <body>
     <nav class="nav-bar">
-        <h1>Name project</h1>
+        <div class="hdr-logo"><img src="./image/logo.png"></div>
+        <div class="title-container">
+            <div class="main-title"><h1>ระบบจ่ายยาอัจฉริยะ</h1></div>
+            <div class="sub-title"><p>ห้องพยาบาล โรงเรียนหางดงรัฐราษฎร์อุปถัมภ์ </p></div>
+        </div>
     </nav>
     <div class="container">
         <h1>สำหรับนักเรียน</h1>
@@ -17,13 +21,33 @@
             <div class="main-login-box">
                 <label for="StudentNumber">เลขประจำตัวนักเรียน</label>
                 <input type="text" name="StudentNumber" placeholder="" minlength="5" maxlength="5" required>
-                <label for="StudentName">ชื่อ - นานสกุล</label>
-                <input type="text" name="StudentName" placeholder="" required>
+                <!-- <label for="StudentName">ชื่อ - นานสกุล</label>
+                <input type="text" name="StudentName" placeholder="" required> -->
             </div>
             <div class="sub-login-box">
                 <div class="sub-sub-login-box">
                     <label for="Level">ระดับชั้น</label>
-                    <input type="text" name="Level" placeholder="">
+                    <select name="Class" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="sub-sub-login-box">
+                    <label for="Level">ระดับชั้น</label>
+                    <select name="Room" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">6</option>
+                        <option value="8">6</option>
+                    </select>
                 </div>
                 <div class="sub-sub-login-box">
                     <label for="Number">เลขที่</label>
