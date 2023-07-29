@@ -146,6 +146,9 @@ select{
 }
 
 .login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 2px solid;
     border-color: #58595E;
     color: #F5F5F5;
@@ -156,6 +159,8 @@ select{
     cursor: pointer;
     width: 30%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-size: 24px;
 }
 
 .footer {
