@@ -17,6 +17,22 @@
             <p>ปวดหัว / มีไข้</p>
         </div>
         <form class="login-box" action="/student_from" method="post">
+            <div class="sub-login-box">
+                <div class="sub-sub-login-box">
+                    <label for="Level">อายุ</label>
+                    <input type="text" name="Age" placeholder="ตัวอย่าง : 17" required>
+                </div>
+                <div class="sub-sub-login-box">
+                    <label for="Number">น้ำหนัก</label>
+                    <input type="text" name="Weight" placeholder="ตัวอย่าง : 49" maxlength="5" required>
+                </div>
+            </div>
+            <div class="main-login-box">
+                <label for="StudentNumber">อุณหภูมิร่างกาย(*ถ้ามี)</label>
+                <input type="text" name="Temp" placeholder="ตัวอย่าง : 36.6" maxlength="5" required>
+                <label for="StudentName">อาการที่พบ</label>
+                <input type="text" name="Cause" placeholder="ตัวอย่าง : ปวดหัวเป็นไข้คล้ายจะเป็นลม" required>
+            </div>
             <div class="container-slider">
                 <input type="text" name="Symptom" value="ปวดหัว" hidden>
                 <label for="Range">ระดับความปวดของอาการ</label>

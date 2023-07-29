@@ -8,14 +8,12 @@
     <title>Test1</title>
 </head>
 <body>
-    <nav class="nav-bar">
-        <h1>Name project</h1>
-    </nav>
+    <%- include('nav') %>
     <div class="container">
         <h1>สำหรับนักเรียน</h1>
         <form class="login-box" method="post" action="/student_sing_in">
             <div class="main-login-box">
-                <label for="StudentNumber">เลขประจำตัวนักเรียน(เช่น12345)</label>
+                <label for="StudentNumber">เลขประจำตัวนักเรียน</label>
                 <input type="text" name="StudentNumber" placeholder="" minlength="5" maxlength="5" required>
             </div>
             <div class="sub-login-box">

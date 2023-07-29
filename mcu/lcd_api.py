@@ -31,7 +31,7 @@ class LcdApi:
 
     LCD_FUNCTION = 0x20         # DB5: function set
     LCD_FUNCTION_8BIT = 0x10    # --DB4: set 8BIT mode (0->4BIT mode)
-    LCD_FUNCTION_2LINES = 0x08  # --DB3: tw	o lines (0->one line)
+    LCD_FUNCTION_2LINES = 0x08  # --DB3: two lines (0->one line)
     LCD_FUNCTION_10DOTS = 0x04  # --DB2: 5x10 font (0->5x7 font)
     LCD_FUNCTION_RESET = 0x30   # See "Initializing by Instruction" section
 

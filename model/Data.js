@@ -18,6 +18,10 @@ let dataSchema = mongoose.Schema({
     Number:Number,
     Symptom:String,
     Range:Number,
+    Temp:Number,
+    Age:Number,
+    Weight:Number,
+    Cause:String,
     Detail:{
         Serial:Number,
         Send:Boolean,
