@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./image/HDR.ico">
     <link rel="stylesheet" href="style/style.css">
-    <title>ตรวจประจำเดือน</title>
+    <title>ตรวจอาการปวดประจำเดือน</title>
 </head>
 <body>
     <%- include('nav') %>
@@ -18,19 +18,17 @@
         <form class="login-box" action="/student_from" method="post">
             <div class="sub-login-box">
                 <div class="sub-sub-login-box">
-                    <label for="Level">อายุ</label>
+                    <label for="Level">อายุ (ปี)</label>
                     <input type="text" name="Age" placeholder="ตัวอย่าง : 17" required>
                 </div>
                 <div class="sub-sub-login-box">
-                    <label for="Number">น้ำหนัก</label>
+                    <label for="Number">น้ำหนัก (กิโลกรัม)</label>
                     <input type="text" name="Weight" placeholder="ตัวอย่าง : 49" maxlength="5" required>
                 </div>
             </div>
             <div class="main-login-box">
-                <label for="StudentNumber">อุณหภูมิร่างกาย(*ถ้ามี)</label>
-                <input type="text" name="Temp" placeholder="ตัวอย่าง : 36.6" maxlength="5" required>
                 <label for="StudentName">อาการที่พบ</label>
-                <input type="text" name="Cause" placeholder="ตัวอย่าง : ปวดบิดเลือดกระชูด" required>
+                <input type="text" name="Cause" placeholder="ตัวอย่าง : ปวดหน่วง, ปวดบิด" required>
             </div>
             <div class="container-slider">
                 <input type="text" name="Symptom" value="ปวดประจำเดือน" hidden>
