@@ -49,7 +49,7 @@ router.get('/emergency',(req,res)=>{
     res.render('emergency')
 })
 
-router.post('/emergencysend',(req,res)=>{
+router.get('/emergencysend',(req,res)=>{
     res.render("emergencysend")
 })
 
