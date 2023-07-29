@@ -7,6 +7,10 @@
     font-family: 'Itim', cursive;
 }
 
+body{
+    background-color: #F5F5F5;
+}
+
 .nav-bar {
     display: flex;
     justify-content: space-evenly;
@@ -207,4 +211,15 @@ select{
     /* background-color: red; */
     /* appearance: none; */
     outline: none;
+}
+
+
+@media only screen and (max-height: 600px){
+    .nav-bar{
+        visibility: hidden;
+    }
+
+    .footer{
+        visibility: hidden;
+    }
 }
