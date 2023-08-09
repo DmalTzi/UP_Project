@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>ระบบดูแล</title>
+</head>
+<body>
+    <%- include('nav') %>
+    <div class="main-content-container">
+        <% Object.values(data).forEach(function(item){%>
+        <a href="<%= item.Detail.Serial%>" class="link-information-card">
+            <div class="information-card">
+                <div class="info-name-card">
+                    <p><%= item.StudentNumber%></p>
+                    <p>นายสมศรี ใจดี</p>
+                    <p><%= String(item.Room)[0]%>/<%=String(item.Room).slice(-1)%></p>
+                </div>
+                <div class="info-detail-card">
+                    <p>อาการ : <%= item.Symptom%></p>
+                    <!-- <p>รายละเอียด : <%= item.Cause%></p> -->
+                    <p>น้ำหนัก : <%= item.Weight%></p>
+                    <p>อุณหภูมิ : <%= item.Temp%></p>
+                    <!-- <p>ระดับความปวด : <%= item.Range%></p> -->
+                    <!-- <p>Serial : <%= item.Serial%></p> -->
+                    <p>สถานะการส่ง : <%= item.Detail.Send%></p>
+                </div>
+                <div class="info-time-card">
+                    <p><%= item.Detail.date%></p>
+                    <p>9:47PM</p>
+                </div>
+            </div>
+        </a>
+       <% }) %>
+    </div>
+    <footer class="footer">
+    </footer>
+</body>
+</html>

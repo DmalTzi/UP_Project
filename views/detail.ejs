@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>ระบบดูแล</title>
+</head>
+<body>
+    <%- include('nav') %>
+    <div class="main-content-container">
+        <div class="information-card">
+            <div class="info-name-card">
+                <p><%= item.StudentNumber%></p>
+                <p>นายสมศรี ใจดี</p>
+                <p><%= String(item.Room)[0]%>/<%=String(item.Room).slice(-1)%></p>
+            </div>
+            <div class="info-detail-card">
+                <p>อาการ : <%= item.Symptom%></p>
+                <p>รายละเอียด : <%= item.Cause%></p>
+                <p>อายุ : <%= item.Age%></p>
+                <p>น้ำหนัก : <%= item.Weight%></p>
+                <p>อุณหภูมิ : <%= item.Temp%></p>
+                <p>ระดับความปวด : <%= item.Range%></p>
+                <p>Serial : <%= item.Detail.Serial%></p>
+                <p>สถานะการส่ง : <%= item.Detail.Send%></p>
+            </div>
+            <div class="info-time-card">
+                <p><%= item.Detail.date%></p>
+                <p>9:47PM</p>
+                <form action="/admin-approve" method="post">
+                    <input type="hidden" name="update_id" value="<%= item._id %>">
+                    <input type="hidden" name="StudentNumber" value="<%= item.StudentNumber %>">
+                    <input type="hidden" name="Room" value="<%= item.Room %>">
+                    <input type="hidden" name="Number" value="<%= item.Number %>">
+                    <input type="hidden" name="Symptom" value="<%= item.Symptom %>">
+                    <input type="hidden" name="Range" value="<%= item.Range %>">
+                    <input type="hidden" name="Temp" value="<%= item.Temp %>">
+                    <input type="hidden" name="Age" value="<%= item.Age %>">
+                    <input type="hidden" name="Weight" value="<%= item.Weight %>">
+                    <input type="hidden" name="Cause" value="<%= item.Cause %>">
+                    <input type="hidden" name="Serial" value="<%= item.Detail.Serial %>">
+                    <input type="hidden" name="Time" value="<%= item.Time %>">
+                    <input type="hidden" name="date" value="<%= item.Detail.date %>">
+                    <button type="submit" class="approve-btn">อนุมัติ</button>
+                    <!-- <button type="submit" class="disapprove-btn">ไม่อนุมัติ</button> -->
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+    </footer>
+</body>
+</html>
