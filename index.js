@@ -1,17 +1,14 @@
-function padTo2Digits(num) {
-    return num.toString().padStart(2, '0');
+const History = require('../model/Data')
+
+
+
+
+let ran_str = ''
+
+for (let i = 0; i < 5; i++){
+    let ran = Math.floor(Math.random() * 10)
+    ran_str += String(ran)
+    console.log(ran)
 }
+console.log(Number(ran_str))
 
-function formatDate(date) {
-    return [
-        padTo2Digits(date.getDate()),
-        padTo2Digits(date.getMonth() + 1),
-    date.getFullYear()
-    ].join('')
-}
-
-getnumber = formatDate(new Date())+set
-
-
-console.log(getnumber)
-// console.log(formatDate(new Date()));

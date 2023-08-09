@@ -10,6 +10,8 @@ app.use(express.urlencoded({extended:false}))
 app.use(router)
 app.use(express.static(path.join(__dirname,'public')))
 
-app.listen(8080,()=>{
-    console.log("Sever run on port 8080")
+
+const PORT = 8080
+app.listen(PORT,()=>{
+    console.log("Sever run on port : ",PORT)
 })
