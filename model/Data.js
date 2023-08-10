@@ -14,6 +14,7 @@ mongoose.connect(mongodburl,{dbName:"HDRProjecct"},{
 
 let dataSchema = mongoose.Schema({
     StudentNumber:Number,
+    StudenName:String,
     Room:Number,
     Number:Number,
     Symptom:String,
@@ -35,7 +36,7 @@ let dataSchema = mongoose.Schema({
 // carete mode
 let History = mongoose.model("History",dataSchema)
 
-module.exports = History, 
+module.exports = History
 
 // export model
 module.exports.save=function(model,data){

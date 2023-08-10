@@ -9,9 +9,32 @@
 </head>
 <body>
     <%- include('nav') %>
+    <script>
+        function refreshPage(){
+            window.location.reload();
+        } 
+        </script>
+    <div class="nav-bar-card">
+        <form action="/admin" method="get">
+            <div class="nav-filter-bar-card">
+                <input type="date" name="select-date" id="" class="date-time-filter" placeholder="dd/mm/yyyy">
+                <select name="Topic-show" id="">
+                    <option value="all">ทั้งหมด</option>
+                    <option value="false">รออนุมัติ</option>
+                    <option value="true">อนุมัติเรียบร้อย</option>
+                </select>
+                <button type="submit" class="filter-btn" >ยืนยัน</button>
+            </div>
+        </form>
+        <div class="nav-other-bar-card">
+            <button type="button" onclick="refreshPage() " class="filter-btn">รีเฟรช</button>
+            <button type="button" class="filter-btn">ดาวน์โหลด</button>
+        </div>
+    </div>
+    
     <div class="main-content-container">
         <% Object.values(data).forEach(function(item){%>
-        <a href="<%= item.Detail.Serial%>" class="link-information-card">
+        <a href="/admin/<%= item.Detail.Serial%>" class="link-information-card">
             <div class="information-card">
                 <div class="info-name-card">
                     <p><%= item.StudentNumber%></p>
@@ -19,13 +42,7 @@
                     <p><%= String(item.Room)[0]%>/<%=String(item.Room).slice(-1)%></p>
                 </div>
                 <div class="info-detail-card">
-                    <p>อาการ : <%= item.Symptom%></p>
-                    <!-- <p>รายละเอียด : <%= item.Cause%></p> -->
-                    <p>น้ำหนัก : <%= item.Weight%></p>
-                    <p>อุณหภูมิ : <%= item.Temp%></p>
-                    <!-- <p>ระดับความปวด : <%= item.Range%></p> -->
-                    <!-- <p>Serial : <%= item.Serial%></p> -->
-                    <p>สถานะการส่ง : <%= item.Detail.Send%></p>
+                    <p>อาการ : <%= item.Symptom%> สถานะการส่ง : <%= item.Detail.Send%></p>
                 </div>
                 <div class="info-time-card">
                     <p><%= item.Detail.date%></p>

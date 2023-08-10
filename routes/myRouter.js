@@ -62,9 +62,33 @@ router.get('/404', (req,res)=>{
 })
 
 router.get('/admin', (req,res)=>{
-    History.find().exec((err,doc)=>{
-        res.render("admin", {data:doc})
-    })
+    console.log(req.query["Topic-show"])
+    let fil_topic = req.query["Topic-show"]
+    let fil_date_raw = req.query["select-date"]
+    console.log(fil_date_raw)
+    if(fil_date_raw){
+        let fil_date = fil_date_raw.slice(8,10) + '/' +fil_date_raw.slice(5,7) + '/' + fil_date_raw.slice(0,4)
+        console.log(fil_date)
+        if (fil_date && fil_topic == "all"){
+            History.find({"Detail.date":fil_date}).exec((err,doc)=>{
+                console.log("all")
+                console.log(doc)
+                if(err) console.log(err)
+                res.render("admin", {data:doc})
+            })
+        }else if (fil_date && fil_topic){
+            History.find({"Detail.date":fil_date,"Detail.Send":fil_topic}).exec((err,doc)=>{
+                console.log("true/false")
+                if(err) console.log(err)
+                res.render("admin", {data:doc})
+            })
+        }
+    }else{
+        History.find().exec((err,doc)=>{
+            res.render("admin", {data:doc})
+        })
+    }
+    
 })
 
 
@@ -106,9 +130,10 @@ const randome_serial = function(){
     return ran_str
 }
 
-router.get('/:id',(req,res)=>{
+router.get('/admin/:id',(req,res)=>{
     let serial_id = req.params.id
     History.findOne({"Detail.Serial":serial_id}).exec((err,doc)=>{
+        if(err) res.redirect('/admin')
         console.log(doc)
         res.render("detail", {item:doc})
     })
@@ -153,6 +178,7 @@ router.post('/student_sing_in',(req,res)=>{
 router.post('/student_from',(req,res)=>{
     let data = new History({
         StudentNumber:data1.StudentNumber,
+        StudentName:data1.StudentNumber,
         Room:data1.Room,
         Number:Number(data1.Number),
         Symptom:req.body.Symptom,
