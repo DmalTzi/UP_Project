@@ -16,6 +16,8 @@
             <p>ปวดประจำเดือน</p>
         </div>
         <form class="login-box" action="/student_from" method="post">
+            <input type="text" name="Symptom" value="ปวดประจำเดือน" hidden>
+            <input type="text" name="SendBy" value="รอครูอนุมัติ"" hidden>
             <div class="sub-login-box">
                 <div class="sub-sub-login-box">
                     <label for="Level">อายุ (ปี)</label>
@@ -31,7 +33,6 @@
                 <input type="text" name="Cause" placeholder="ตัวอย่าง : ปวดหน่วง, ปวดบิด" required>
             </div>
             <div class="container-slider">
-                <input type="text" name="Symptom" value="ปวดประจำเดือน" hidden>
                 <label for="Range">ระดับความปวดของอาการ</label>
                 <div class="box-slider">
                     <div class="slider">

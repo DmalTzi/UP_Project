@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./image/HDR.ico">
+    <link rel="stylesheet" href="style/style.css">
+    <title>ตรวจอาการปวดหัว</title>
+</head>
+<body>
+    <%- include('nav') %>
+    <div class="container">
+        <div class="section-title">
+            <h1>อาการ</h1>
+            <p>ท้องเสีย</p>
+        </div>
+        <form class="login-box" action="/student_from" method="post">
+            <input type="text" name="Symptom" value="ท้องเสีย"" hidden>
+            <input type="text" name="SendBy" value="รอครูอนุมัติ"" hidden>
+            <div class="sub-login-box">
+                <div class="sub-sub-login-box">
+                    <label for="Level">อายุ (ปี)</label>
+                    <input type="text" name="Age" placeholder="ตัวอย่าง : 17" required>
+                </div>
+                <div class="sub-sub-login-box">
+                    <label for="Number">น้ำหนัก (กก.)</label>
+                    <input type="text" name="Weight" placeholder="ตัวอย่าง : 49" maxlength="5" required>
+                </div>
+            </div>
+            <div class="sub-login-box">
+                <div class="sub-sub-login-box">
+                    <label for="Level">เริ่มถ่ายตั้งแต่</label>
+                    <input type="date" name="Date_poo" placeholder="dd/mm/yyyy" required>
+                </div>
+                <div class="sub-sub-login-box">
+                    <label for="Number">เวลา</label>
+                    <input type="text" name="poo_time" placeholder="14:23" maxlength="5" required>
+                </div>
+            </div>
+            <div class="sub-sub-login-box">
+                <label for="time_poo">ถ่ายมาแล้วกี่ครั้ง</label>
+                <input type="text" name="time_poo" placeholder="ตัวอย่าง : 3" required>
+            </div>
+            <button class="login-btn">ยืนยัน</button>
+        </form>
+    </div>
+    <footer class="footer">
+    </footer>
+</body>
+</html>

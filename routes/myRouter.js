@@ -11,6 +11,18 @@ router.get('/teacher', (req,res)=>{
     res.render("teacher")
 })
 
+router.get("/fever", (req,res)=>{
+    res.render("fever")
+})
+
+router.get("/diarrhea", (req,res)=>{
+    res.render("diarrhea")
+})
+
+router.get('/urticaria', (req,res)=>{
+    res.render("urticaria")
+})
+
 router.get('/headache',(req,res)=>{
     res.render("headache")
 })
@@ -60,6 +72,8 @@ router.get('/emergencysend',(req,res)=>{
 router.get('/404', (req,res)=>{
     res.render("notfound")
 })
+
+
 
 router.get('/admin', (req,res)=>{
     console.log(req.query["Topic-show"])
@@ -176,36 +190,45 @@ router.post('/student_sing_in',(req,res)=>{
 })
 
 router.post('/student_from',(req,res)=>{
-    let data = new History({
-        StudentNumber:data1.StudentNumber,
-        StudentName:data1.StudentNumber,
-        Room:data1.Room,
-        Number:Number(data1.Number),
-        Symptom:req.body.Symptom,
-        Range:Number(req.body.Range),
-        Temp:Number(req.body.Temp),
-        Age:Number(req.body.Age),
-        Weight:Number(req.body.Weight),
-        Cause:req.body.Cause,
-        Detail:{
-            Serial:randome_serial(),
-            Send:false,
-            Time:1,
-            date:formatDate(new Date())},
+    console.log(data1)
+    StudentData.findOne({"StudentNumber":Number(data1.StudentNumber)}).exec((err,doc)=>{
+        console.log(doc)
+        let data = new History({
+            StudentNumber:data1.StudentNumber,
+            StudentName:doc.StudentName,
+            Room:data1.Room,
+            Number:Number(data1.Number),
+            Symptom:req.body.Symptom,
+            Age:Number(req.body.Age),
+            Weight:Number(req.body.Weight),
+            Cause:req.body.Cause,
+            Range:Number(req.body.Range),
+            Temp:Number(req.body.Temp),
+            Deta_poo:req.body.Deta_poo,
+            time_poo:req.body.time_poo,
+            poo_time:req.body.poo_time,
+            Detail:{
+                Serial:randome_serial(),
+                SendBy:req.body.SendBy,
+                SendStatus:false,
+                Time:new Date().toLocaleTimeString([],{hour: '2-digit',minute: '2-digit',}),
+                date:formatDate(new Date())},
+        })
+        console.log(data)
     })
-    History.save(data,(err)=>{
-        if(Number(req.body.Temp) >= 38){
-            if(err) console.log(err)
-            if(req.body.Symptom == "ปวดประจำเดือน"){
-                res.redirect('/gencodepost')
-            }else if(req.body.Symptom == "ปวดหัว"){
-                res.redirect('/gencodepara')
-            }
-        }else{
-            res.redirect('/approve')
-        }
-    })
-    console.log(data)
+    // History.save(data,(err)=>{
+    //     if(Number(req.body.Temp) >= 38){
+    //         if(err) console.log(err)
+    //         if(req.body.Symptom == "ปวดประจำเดือน"){
+    //             res.redirect('/gencodepost')
+    //         }else if(req.body.Symptom == "ปวดหัว"){
+    //             res.redirect('/gencodepara')
+    //         }
+    //     }else{
+    //         res.redirect('/approve')
+    //     }
+    // })
+
 })
 
 router.post('/promise_in',(req,res)=>{
