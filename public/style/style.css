@@ -69,17 +69,31 @@ body{
 
 .section-title p {
     color: rgba(172,0,0,1);
-    font-size: 20px;
+    font-size: 30px;
+}
+
+.select-flex-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.select-flex-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .link-1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 1rem;
-    margin: 2rem;
-    width: 50%;
+    margin: .5rem;
+    width: 40%;
     background: linear-gradient(180deg, rgba(177,18,18,1) 0%, rgba(64,36,36,1)100%);;
     font-size: 20px;
     color: white;
