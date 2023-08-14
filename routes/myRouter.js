@@ -39,19 +39,14 @@ router.get('/approve',(req,res)=>{
     res.render("approve")
 })
 
-router.get('/gencodepara',(req,res)=>{
+router.get('/gencode',(req,res)=>{
     History.find({"StudentNumber":data1.StudentNumber}).exec((err,doc1)=>{
             data = doc1.slice(-1)[0]
+            console.log(data)
             res.render('gencodepara',{data:data})
         })
     })
 
-router.get('/gencodepost',(req,res)=>{
-    History.find({"StudentNumber":data1.StudentNumber}).exec((err,doc1)=>{
-        data = doc1.slice(-1)[0]
-        res.render('gencodepara',{data:data})
-    })
-})
 
 router.get('/approvepromise',(req,res)=>{
     res.render('approvepromise')
@@ -105,7 +100,6 @@ router.get('/admin', (req,res)=>{
     
 })
 
-
 const datafirst = function(StudentNumberI,ClassI,RoomI,NumberI){
     var data1 = {
         StudentNumber:StudentNumberI,
@@ -141,6 +135,7 @@ const randome_serial = function(){
             return ran_str
         }
     })
+    console.log(ran_str)
     return ran_str
 }
 
@@ -161,7 +156,7 @@ router.post('/admin-approve', (req,res)=>{
         Number:req.body.Number,
         Symptom:req.body.Symptom,
         Range:req.body.Range,
-        Temp:req.body.Temp,
+        Temper:req.body.Temper,
         Age:req.body.Age,
         Weight:req.body.Weight,
         Cause:req.body.Cause,
@@ -191,44 +186,37 @@ router.post('/student_sing_in',(req,res)=>{
 
 router.post('/student_from',(req,res)=>{
     console.log(data1)
-    StudentData.findOne({"StudentNumber":Number(data1.StudentNumber)}).exec((err,doc)=>{
-        console.log(doc)
-        let data = new History({
-            StudentNumber:data1.StudentNumber,
-            StudentName:doc.StudentName,
-            Room:data1.Room,
-            Number:Number(data1.Number),
-            Symptom:req.body.Symptom,
-            Age:Number(req.body.Age),
-            Weight:Number(req.body.Weight),
-            Cause:req.body.Cause,
-            Range:Number(req.body.Range),
-            Temp:Number(req.body.Temp),
-            Deta_poo:req.body.Deta_poo,
-            time_poo:req.body.time_poo,
-            poo_time:req.body.poo_time,
-            Detail:{
-                Serial:randome_serial(),
-                SendBy:req.body.SendBy,
-                SendStatus:false,
-                Time:new Date().toLocaleTimeString([],{hour: '2-digit',minute: '2-digit',}),
-                date:formatDate(new Date())},
-        })
-        console.log(data)
-    })
-    // History.save(data,(err)=>{
-    //     if(Number(req.body.Temp) >= 38){
-    //         if(err) console.log(err)
-    //         if(req.body.Symptom == "ปวดประจำเดือน"){
-    //             res.redirect('/gencodepost')
-    //         }else if(req.body.Symptom == "ปวดหัว"){
-    //             res.redirect('/gencodepara')
-    //         }
-    //     }else{
-    //         res.redirect('/approve')
-    //     }
+    // StudentData.findOne({"StudentNumber":data1.StudentNumber}).exec((err,doc)=>{
+    //     console.log(doc)
+    //     StudentNamess = SN(doc.StudentName)
+    //     console.log("Studentnamess is :",StudentNamess)
     // })
+    let data = History({
+        StudentNumber:data1.StudentNumber,
+        // StudentName:StudentName,
+        Room:data1.Room,
+        Number:Number(data1.Number),
+        Symptom:req.body.Symptom,
+        Age:Number(req.body.Age),
+        Weight:Number(req.body.Weight),
+        Cause:req.body.Cause,
+        Range:Number(req.body.Range),
+        Temper:Number(req.body.Temper),
+        Deta_poo:req.body.Deta_poo,
+        Time_poo:req.body.time_poo,
+        Poo_time:req.body.poo_time,
+        Detail:{
+            Serial:randome_serial(),
+            SendBy:req.body.SendBy,
+            SendStatus:false,
+            Time:new Date().toLocaleTimeString([],{hour: '2-digit',minute: '2-digit',}),
+            date:formatDate(new Date())},
+    })
 
+    console.log("saveData is : ",data)
+    History.save(data,(err)=>{
+        if(err) console.log(err)
+    })
 })
 
 router.post('/promise_in',(req,res)=>{
