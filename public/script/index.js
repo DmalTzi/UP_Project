@@ -1,4 +1,3 @@
-const btn = document.getElementById('btn')
 const liffId = '2000223015-E1wxd95K'
 let userId = ''
 
