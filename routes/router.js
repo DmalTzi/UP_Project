@@ -193,6 +193,7 @@ router.post("/update", (req,res)=>{
             console.log(data)
             if(req.body.Temp >= 38){client.pushMessage(to=userid,{type:"text",text:`${result.StudentName}\nรหัสของคุณคือ : ${data.Detail.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})}
             Data.save(data)
+            close()
         })
     }else if(userby == "Teacher"){
         TeacherData.findOne({"User":teacher_user}).then((result) => {
@@ -220,8 +221,8 @@ router.post("/update", (req,res)=>{
             console.log(data)
             if(req.body.Temp >= 38){client.pushMessage(to=userid,{type:"text",text:`${result.TeacherName}\nรหัสของคุณคือ : ${data.Detail.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})}
             Data.save(data)
-        })
-        close()
+            close()
+    })
     }
 })
 
