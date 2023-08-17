@@ -18,6 +18,7 @@ function main(){
 main()
 
 function close(){
+    console.log("closed")
     liff.closeWindow();
 }
 
