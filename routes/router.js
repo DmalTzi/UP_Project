@@ -7,7 +7,7 @@ const env = dotenv.config().parsed
 const Data = require("../model/Data")
 const StudentData = require('../model/StudentData')
 const fun = require("./function")
-const close = require("./../public/script/index")
+const close = require("/script/index")
 const TeacherData = require('../model/TeacherData')
 
 
