@@ -7,6 +7,7 @@ const env = dotenv.config().parsed
 const Data = require("../model/Data")
 const StudentData = require('../model/StudentData')
 const fun = require("./function")
+const close = require("./../public/script/index")
 const TeacherData = require('../model/TeacherData')
 
 
@@ -164,7 +165,6 @@ router.post("/update", (req,res)=>{
     }else{
         SendBy = "รอครูอนุมัติ"
     }
-    
     if(userby == "Student"){
         StudentData.findOne({"StudentNumber":studentnumber}).then((result) => {
             let data = new Data({
@@ -221,6 +221,7 @@ router.post("/update", (req,res)=>{
             if(req.body.Temp >= 38){client.pushMessage(to=userid,{type:"text",text:`${result.TeacherName}\nรหัสของคุณคือ : ${data.Detail.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})}
             Data.save(data)
         })
+        close()
     }
 })
 

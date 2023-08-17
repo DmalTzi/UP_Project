@@ -18,6 +18,6 @@ app.use(express.json());
 
 app.use(router)
 
-app.listen(5000, ()=>{
-    console.log("listening on 5000")
+app.listen(1234, ()=>{
+    console.log("listening on 1234")
 })
