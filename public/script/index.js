@@ -1,5 +1,5 @@
 const btn = document.getElementById('btn')
-const liffId = '2000422188-l3GpOXkj'
+const liffId = '2000223015-E1wxd95K'
 let userId = ''
 
 function main(){
