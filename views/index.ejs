@@ -4,30 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="image/HDR.ico">
     <link rel="stylesheet" href="style/style.css">
-    <title>Test1</title>
+    <title>สำหรับนักเรียน</title>
 </head>
 <body>
-    <nav class="nav-bar">
-        <div class="hdr-logo"><img src="./image/logo.png"></div>
-        <div class="title-container">
-            <div class="main-title"><h1>ระบบจ่ายยาอัจฉริยะ</h1></div>
-            <div class="sub-title"><p>ห้องพยาบาล โรงเรียนหางดงรัฐราษฎร์อุปถัมภ์ </p></div>
-        </div>
-    </nav>
+    <%- include('nav') %>
     <div class="container">
         <h1>สำหรับนักเรียน</h1>
-        <form class="login-box">
+        <form class="login-box" onsubmit="send(event)" method="post" action="/student_sign_in">
             <div class="main-login-box">
+                <input type="text" name="UserBy" value="Student" hidden>
                 <label for="StudentNumber">เลขประจำตัวนักเรียน</label>
-                <input type="text" name="StudentNumber" placeholder="" minlength="5" maxlength="5" required>
-                <!-- <label for="StudentName">ชื่อ - นานสกุล</label>
-                <input type="text" name="StudentName" placeholder="" required> -->
+                <input type="text" name="StudentNumber" id="StudentNumber" placeholder="" minlength="5" maxlength="5" required>
             </div>
             <div class="sub-login-box">
                 <div class="sub-sub-login-box">
-                    <label for="Level">ระดับชั้น</label>
-                    <select name="Class" required>
+                    <label for="Class">ระดับชั้น</label>
+                    <select name="Class" id="Class" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -37,28 +31,31 @@
                     </select>
                 </div>
                 <div class="sub-sub-login-box">
-                    <label for="Level">ระดับชั้น</label>
-                    <select name="Room" required>
+                    <label for="Room">ห้อง</label>
+                    <select name="Room" id="Room" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
-                        <option value="7">6</option>
-                        <option value="8">6</option>
                     </select>
                 </div>
                 <div class="sub-sub-login-box">
                     <label for="Number">เลขที่</label>
-                    <input type="text" name="Number" maxlength="2">
+                    <input type="text" name="Number" id="Number" maxlength="2" required>
                 </div>
             </div>
-            <a class="officer-btn" href="/teacher"><p>login สำหรับบุคลากรทางการศึกษา</p></a>
+            <a class="officer-btn" href="/teacher"><p>เข้าสู่ระบบสำหรับบุคลากรในโรงเรียน</p></a>
             <button class="login-btn">ยืนยัน</button>
         </form>
     </div>
     <footer class="footer">
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+    <script src="script/index.js"></script>
 </body>
 </html>

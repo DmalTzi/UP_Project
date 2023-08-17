@@ -12,11 +12,10 @@ mongoose.connect(mongodburl,{dbName:"HDRProjecct"},{
 }).catch(err=>console.log(err))
 
 
-let StudentData = mongoose.model("StudentData", mongoose.Schema({
-    Room:Number,
-    Number:Number,
-    StudentNumber:Number,
-    StudentName:String,
+let TeacherData = mongoose.model("teacherdata", mongoose.Schema({
+    TeacherName:String,
+    User:String,
+    Password:String
 }))
 
-module.exports = StudentData
+module.exports = TeacherData

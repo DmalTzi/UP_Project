@@ -17,11 +17,12 @@
     <div class="nav-bar-card">
         <form action="/admin" method="get">
             <div class="nav-filter-bar-card">
-                <input type="date" name="select-date" id="" class="date-time-filter" placeholder="dd/mm/yyyy">
-                <select name="Topic-show" id="">
-                    <option value="all">ทั้งหมด</option>
-                    <option value="false">รออนุมัติ</option>
-                    <option value="true">อนุมัติเรียบร้อย</option>
+                <!-- <input type="date" name="select-date" id="" class="date-time-filter" placeholder="dd/mm/yyyy"> -->
+                <select name="Topic_show" id="">
+                    <option value="all" >ทั้งหมด</option>
+                    <option value="รอครูอนุมัติ" >รอครูอนุมัติ</option>
+                    <option value="อนุมัติโดยระบบ" >อนุมัติโดยระบบ</option>
+                    <option value="อนุมัติโดยครู" >อนุมัติโดยครู</option>
                 </select>
                 <button type="submit" class="filter-btn" >ยืนยัน</button>
             </div>
@@ -34,22 +35,39 @@
     
     <div class="main-content-container">
         <% Object.values(data).forEach(function(item){%>
+            <% if(item.Detail.UserBy == "Student"){%>
         <a href="/admin/<%= item.Detail.Serial%>" class="link-information-card">
             <div class="information-card">
                 <div class="info-name-card">
-                    <p><%= item.StudentNumber%></p>
-                    <p>นายสมศรี ใจดี</p>
+                    <p><%= item.StudentNumber %></p>
+                    <p><%= item.StudentName %></p>
                     <p><%= String(item.Room)[0]%>/<%=String(item.Room).slice(-1)%></p>
                 </div>
                 <div class="info-detail-card">
-                    <p>อาการ : <%= item.Symptom%> สถานะการส่ง : <%= item.Detail.Send%></p>
+                    <p>อาการ : <%= item.Symptom%> | สถานะการอนุมัติ : <%= item.Detail.SendBy%></p>
                 </div>
                 <div class="info-time-card">
                     <p><%= item.Detail.date%></p>
-                    <p>9:47PM</p>
+                    <p><%= item.Detail.Time%></p>
                 </div>
             </div>
         </a>
+        <% }if (item.Detail.UserBy == "Teacher"){%>
+            <a href="/admin/<%= item.Detail.Serial%>" class="link-information-card">
+                <div class="information-card">
+                    <div class="info-name-card">
+                        <p><%= item.TeacherName %></p>
+                    </div>
+                    <div class="info-detail-card">
+                        <p>อาการ : <%= item.Symptom%> | สถานะการอนุมัติ : <%= item.Detail.SendBy%></p>
+                    </div>
+                    <div class="info-time-card">
+                        <p><%= item.Detail.date%></p>
+                        <p><%= item.Detail.Time%></p>
+                    </div>
+                </div>
+            </a>
+        <% } %>
        <% }) %>
     </div>
     <footer class="footer">

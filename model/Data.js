@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 // connect mongodb alats
 const mongodburl = "mongodb+srv://hdrproject:50230@cluster0.ktm1unb.mongodb.net/?retryWrites=true&w=majority"
 
+mongoose.set('strictQuery', true);
 
 mongoose.connect(mongodburl,{dbName:"HDRProjecct"},{
     useNewUrlParser:true,
@@ -13,8 +14,11 @@ mongoose.connect(mongodburl,{dbName:"HDRProjecct"},{
 // schema design
 
 let dataSchema = mongoose.Schema({
+    userId:String,
+    TeacherUser:String,
+    TeacherName:String,
     StudentNumber:Number,
-    StudenName:String,
+    StudentName:String,
     Room:Number,
     Number:Number,
     Symptom:String,
@@ -24,25 +28,24 @@ let dataSchema = mongoose.Schema({
     Range:Number,
     Temp:Number,
     Date_poo:String,
-    time_poo:String,
-    poo_time:Number,
+    Time_poo:String,
+    Poo_time:Number,
     Detail:{
+        UserBy:String,
         Serial:Number,
-        SendStatus:Boolean,
         SendBy:String,
+        SendStatus:Boolean,
         Time:String,
         date:String
     },
-    TeacherNumber:String,
-    TeacherPassword:String
 })
 
 // carete mode
-let History = mongoose.model("History",dataSchema)
+let Data = mongoose.model("wtf",dataSchema)
 
-module.exports = History
+module.exports = Data
 
-// export model
 module.exports.save=function(model,data){
     model.save(data)
+    console.log("Saved")
 }

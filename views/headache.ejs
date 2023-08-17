@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="./image/HDR.ico">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" type="image/x-icon" href="../../../../image/HDR.ico">
+    <link rel="stylesheet" href="../../../../style/style.css">
     <title>ตรวจอาการปวดหัว</title>
 </head>
 <body>
@@ -15,30 +15,27 @@
             <h1>อาการ</h1>
             <p>ปวดหัว</p>
         </div>
-        <form class="login-box" action="/student_from" method="post">
+        <form class="login-box" action="/update" method="post">
             <input type="text" name="Symptom" value="ปวดหัว" hidden>
-            <input type="text" name="SendBy" value="รอครูอนุมัติ"" hidden>
             <div class="sub-login-box">
                 <div class="sub-sub-login-box">
-                    <label for="Level">อายุ (ปี)</label>
+                    <label for="text">อายุ (ปี)</label>
                     <input type="text" name="Age" placeholder="ตัวอย่าง : 17" required>
                 </div>
                 <div class="sub-sub-login-box">
-                    <label for="Number">น้ำหนัก (กก.)</label>
+                    <label for="text">น้ำหนัก (กก.)</label>
                     <input type="text" name="Weight" placeholder="ตัวอย่าง : 49" maxlength="5" required>
                 </div>
             </div>
             <div class="main-login-box">
-                <!-- <label for="StudentNumber">อุณหภูมิร่างกาย (องศาเซลเซียส) (*ถ้ามี)</label>
-                <input type="text" name="Temp" placeholder="ตัวอย่าง : 36.6" maxlength="5" > -->
-                <label for="StudentName">อาการที่พบ</label>
+                <label for="text">อาการที่พบ</label>
                 <input type="text" name="Cause" placeholder="ตัวอย่าง : ปวดหัวเป็นไข้คล้ายจะเป็นลม" required>
             </div>
             <div class="container-slider">
-                <label for="Range">ระดับความปวดของอาการ</label>
+                <label for="text">ระดับความปวดของอาการ</label>
                 <div class="box-slider">
                     <div class="slider">
-                        <input name="Range" id="slider-input"type="range" min="0" max="10" value="5">
+                        <input name="Range" id="slider-input" type="range" min="0" max="10" value="5">
                     </div>
                     <div class="slider-value">10</div>
                 </div>
@@ -51,7 +48,6 @@
                     }
                 </script>
             </div>
-            <!-- <input id="slider-input"type="range" min="0" max="10" value="5"> -->
             <button class="login-btn">ยืนยัน</button>
         </form>
     </div>

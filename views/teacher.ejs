@@ -12,10 +12,11 @@
     <%- include('nav') %>
     <div class="container">
         <h1>สำหรับบุคลากร</h1>
-        <form class="login-box" action="/">
+        <form class="login-box" method="post" action="/teacher/login">
             <div class="main-login-box">
+                <input type="text" name="UserBy" value="Teacher" hidden>
                 <label for="officerNumber">ชื่อผู้ใช้งาน</label>
-                <input type="text" name="TeacherNumber" placeholder="">
+                <input type="text" name="TeacherId" placeholder="T001">
                 <label for="officerpassword">รหัสผ่าน</label>
                 <input type="password" name="TeacherPassword" placeholder="">
             </div>
