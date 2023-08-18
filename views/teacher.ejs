@@ -12,7 +12,7 @@
     <%- include('nav') %>
     <div class="container">
         <h1>สำหรับบุคลากร</h1>
-        <form class="login-box" method="post" action="/teacher/login">
+        <form class="login-box" method="post" action="/teacher/login" onsubmit="send(event)">
             <div class="main-login-box">
                 <input type="text" name="UserBy" value="Teacher" hidden>
                 <label for="officerNumber">ชื่อผู้ใช้งาน</label>
