@@ -29,8 +29,6 @@ async function send(e){
     const Class = document.getElementById("Class").value
     const Room = document.getElementById("Room").value
     const Number = document.getElementById("Number").value
-    console.log(userId)
-    liff.closeWindow()
     try {
         const result = await axios.post("https://testweb-ag7d.onrender.com/api/v1/link-richmenu", {
             StudentNumber:StudentNumber,
