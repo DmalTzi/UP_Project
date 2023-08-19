@@ -1,5 +1,4 @@
 const liffId = '2000223015-E1wxd95K'
-const { default: liff } = require('@line/liff');
 const axios = require('axios')
 
 async function main(){
