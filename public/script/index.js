@@ -1,8 +1,9 @@
+// const liff = require("@line/liff")
 const liffId = '2000223015-E1wxd95K'
 let userId = ''
 
 function main(){
-    liff.init({liffId:liffId})
+    liff.init({liffId:liffId});
     liff.ready.then(()=>{
         console.log(liff.isLoggedIn())
         if(!liff.isLoggedIn()){
