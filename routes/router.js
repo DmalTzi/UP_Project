@@ -1,4 +1,5 @@
 const line = require("@line/bot-sdk")
+const liff = require('@line/liff');
 const express = require('express')
 const router = express.Router()
 const dotenv = require("dotenv")
@@ -8,7 +9,6 @@ const Data = require("../model/Data")
 const StudentData = require('../model/StudentData')
 const fun = require("./function")
 const TeacherData = require('../model/TeacherData')
-const close = require("../public/script")
 
 
 const lineConfig = {
