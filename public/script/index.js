@@ -1,5 +1,4 @@
 const liffId = '2000223015-E1wxd95K'
-const axios = require('axios')
 
 async function main(){
     await liff.init({liffId:liffId});
@@ -19,7 +18,6 @@ async function main(){
 main()
 
 async function liffclose(){
-    main()
     console.log('close')
     console.log(userId)
     liff.closeWindow()
