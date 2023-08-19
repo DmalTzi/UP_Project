@@ -18,6 +18,7 @@ async function main(){
 main()
 
 async function liffclose(){
+    main()
     console.log('close')
     console.log(userId)
     liff.closeWindow()
