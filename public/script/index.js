@@ -46,4 +46,21 @@ async function send(e){
     }
 }
 
-module.exports = liffclose
+async function sendt(e){
+    // e.preventDefault();
+    const TeacherId = document.getElementById("TeacherId")
+    const Teacherpass = document.getElementById("TeacherPassword")
+    try {
+        const result = await axios.post("https://testweb-ag7d.onrender.com/api/v1/link-richmenu", {
+            TeacherId:TeacherId,
+            Teacherpass:Teacherpass,
+            userId:userId
+        })
+        // console.log(result)
+        if(result.status == 200){
+            console.log("done")
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
