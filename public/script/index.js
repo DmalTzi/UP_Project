@@ -25,35 +25,20 @@ async function liffclose(){
 
 async function send(e){
     // e.preventDefault();
+    const TeacherId = document.getElementById("TeacherId")
+    const Teacherpass = document.getElementById("TeacherPassword")
     const StudentNumber = document.getElementById("StudentNumber").value
     const Class = document.getElementById("Class").value
     const Room = document.getElementById("Room").value
     const Number = document.getElementById("Number").value
     try {
         const result = await axios.post("https://testweb-ag7d.onrender.com/api/v1/link-richmenu", {
+            TeacherId:TeacherId,
+            Teacherpass:Teacherpass,
             StudentNumber:StudentNumber,
             Class:Class,
             Room:Room,
             Number:Number,
-            userId:userId
-        })
-        // console.log(result)
-        if(result.status == 200){
-            console.log("done")
-        }
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-async function sendt(e){
-    // e.preventDefault();
-    const TeacherId = document.getElementById("TeacherId")
-    const Teacherpass = document.getElementById("TeacherPassword")
-    try {
-        const result = await axios.post("https://testweb-ag7d.onrender.com/api/v1/link-richmenu", {
-            TeacherId:TeacherId,
-            Teacherpass:Teacherpass,
             userId:userId
         })
         // console.log(result)
