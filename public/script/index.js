@@ -46,4 +46,4 @@ async function send(e){
     }
 }
 
-module.exports = close
+module.exports = liffclose
