@@ -21,6 +21,8 @@ router.get("/",(req,res)=>{
     res.render("index")
 })
 
+
+
 router.get("/teacher", (req,res)=>{
     res.render("teacher")
 })
@@ -123,6 +125,12 @@ router.post("/api/v1/link-richmenu", (req,res)=>{
     userid = req.body.userId
     console.log(userid)
     // res.redirect('/student_sign_in')
+})
+
+router.get("/api/v1/hello", (req,res)=>{
+    res.json({
+        message: 'hello'
+    })
 })
 
 router.post("/student_sign_in",(req,res)=>{
