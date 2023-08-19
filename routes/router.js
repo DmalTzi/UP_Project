@@ -160,7 +160,6 @@ router.get("/student_sign_in/:symptom", (req,res)=>{
 router.post("/update", (req,res)=>{
     if(req.body.Temp >= 38){
         SendBy = "อนุมัติโดยระบบ"
-        if(req.body.TeacherName);
     }else{
         SendBy = "รอครูอนุมัติ"
     }
