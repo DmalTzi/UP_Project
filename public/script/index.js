@@ -9,15 +9,15 @@ async function main(){
         }
         liff.getProfile().then(profile =>{
             userId = profile.userId
-            console.log(profile)
-            liff.closeWindow()
+            console.log("User Id ====> ", userId)
+            // liff.closeWindow()
         })
     })
 }
 
 main()
 
-function close(){
+async function close(){
     console.log('close')
     console.log(userId)
     liff.closeWindow()
