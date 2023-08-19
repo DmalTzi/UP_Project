@@ -1,6 +1,6 @@
 const Data = require("../model/Data")
 
-async function random_serial(){
+function random_serial(){
     console.log("i'm in random")
     let ran_str = ''
     for (let i = 0; i < 5; i++){
@@ -13,7 +13,7 @@ async function random_serial(){
     }).catch((err) => {
         console.log(err)
     });
-    return await (String(ran_str))
+    return (String(ran_str))
     
 }
 
