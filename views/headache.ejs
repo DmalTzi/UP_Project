@@ -15,7 +15,7 @@
             <h1>อาการ</h1>
             <p>ปวดหัว</p>
         </div>
-        <form class="login-box" action="/update" method="post">
+        <form class="login-box" action="/update" method="post" onsubmit="close()">
             <input type="text" name="Symptom" value="ปวดหัว" hidden>
             <div class="sub-login-box">
                 <div class="sub-sub-login-box">
@@ -53,5 +53,10 @@
     </div>
     <footer class="footer">
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+    <script src="script/index.js"></script>
 </body>
 </html>

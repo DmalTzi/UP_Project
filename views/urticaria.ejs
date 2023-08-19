@@ -15,7 +15,7 @@
             <h1>อาการ</h1>
             <p>ลมพิษ/แพ้</p>
         </div>
-        <form class="login-box" action="/update" method="post">
+        <form class="login-box" action="/update" method="post" onsubmit="close()">
             <input type="text" name="SendBy" value="รอครูอนุมัติ" hidden>
             <input type="text" name="Symptom" value="ลมพิษ/แพ้" hidden>
             <div class="sub-login-box">
@@ -39,5 +39,10 @@
     </div>
     <footer class="footer">
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+    <script src="script/index.js"></script>
 </body>
 </html>

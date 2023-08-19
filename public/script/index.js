@@ -17,6 +17,10 @@ function main(){
 
 main()
 
+function close(){
+    liff.closeWindow()
+}
+
 async function send(e){
     // e.preventDefault();
     const StudentNumber = document.getElementById("StudentNumber").value
