@@ -308,7 +308,7 @@ select{
 .main-content-container{
     /* background-color: wheat; */
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: start;
     align-items: center;
     margin: 2rem;
