@@ -124,6 +124,9 @@ router.post("/api/v1/link-richmenu", (req,res)=>{
     console.log(req.body)
     userid = req.body.userId
     console.log(userid)
+    res.json({
+        data : "hello"
+    })
     // res.redirect('/student_sign_in')
 })
 
