@@ -29,13 +29,29 @@ router.get("/teacher", (req,res)=>{
     res.render("teacher")
 })
 
+router.get("/appointment", (req,res)=>{
+    res.render("appointment")
+})
+
+router.get("/emergency", (req,res)=>{
+    res.render("emergency")
+})
+
+router.post('/appointment/send', (req,res)=>{
+    client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',
+        {type:"text",text:`การแจ้งขอนัดพบ \nคาบเรียนที่ : ${ClassPromise} \nของวันที่ : ${DatePromise}`})
+})
+
+router.post('/emergency/send', (req,res)=>{
+    client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',
+        {type:"text",text:`มีเหตุด่วน!!! \nชื่อ : ${req.body.EmergencyName} ได้แจ้งเหตุด่วน \nเบอร์ติดต่อ : ${req.body.Tel} \nสถานที่เกิดเหตุ : ${req.body.WhereEvergency} \nอาการของผู้ประสบเหตุ : ${req.body.WhatHappen}`})
+})
+
 router.post("/teacher/login",(req,res)=>{
     teacher_user = req.body.TeacherId
     teacher_pass = req.body.TeacherPassword
     userby = req.body.UserBy
     TeacherData.findOne({"User":teacher_user}).then((result) => {
-        console.log(teacher_user, teacher_pass)
-        console.log(result)
         if (result != null){
             if (teacher_user == result.User && teacher_pass == result.Password){
                 res.render("select")
@@ -52,13 +68,11 @@ router.post("/teacher/login",(req,res)=>{
 
 router.get("/admin", (req,res)=>{
     fil_topic = req.query.Topic_show
-    console.log(fil_topic)
     Data.find().then((result) => {
         // console.log(result)
         if (fil_topic == undefined || fil_topic == "All"){
             res.render("admin", {data:result})
         }else if(fil_topic == "รอครูอนุมัติ"){
-            console.log("รออนุมัติยยยย")
             Data.find({"Detail.SendBy":fil_topic}).then((result) => {
                 res.render("admin", {data:result})
             });
@@ -122,31 +136,17 @@ router.post("/approve", (req,res)=>{
     // console.log(update)
 })
 
-router.post("/api/v1/link-richmenu", (req,res)=>{
-    console.log("api richmenu on")
-    console.log(req.body)
+router.post("/api/liff/login", (req,res)=>{
+    console.log(JSON.stringify({DateAndTime : new Date().toLocaleString(), api:"/api/liff/login"}))
     userid = req.body.userId
-    console.log(userid)
-    res.json({
-        data : "hello"
-    })
-})
-
-router.get("/api/v1/hello", (req,res)=>{
-    res.json({
-        message: 'hello'
-    })
 })
 
 router.post("/student_sign_in",(req,res)=>{
-    console.log(req.body)
     studentnumber = req.body.StudentNumber
     studentclassroom = Number([req.body.Class,'0',req.body.Room].join(''))
     numberstudent = req.body.Number
     userby = req.body.UserBy
     StudentData.findOne({"StudentNumber":Number(req.body.StudentNumber)}).then((result) => {
-        console.log(studentnumber, studentclassroom, numberstudent)
-        console.log(result)
         if (result != null){
             if (studentnumber == result.StudentNumber && studentclassroom == result.Room && numberstudent == result.Number){
                 res.render("select")
@@ -201,9 +201,9 @@ router.post("/update", (req,res)=>{
                     Time:new Date().toLocaleTimeString([],{hour: '2-digit',minute: '2-digit'}),
                     date:fun.formatDate(new Date())},
             })
-            console.log(data)
             if(req.body.Temp >= 38){client.pushMessage(to=userid,{type:"text",text:`${result.StudentName}\nรหัสของคุณคือ : ${data.Detail.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})}
             Data.save(data)
+            console.log(JSON.stringify({MSG:"Data has saved", DateAndTime : new Date().toLocaleString()}))
         })
     }else if(userby == "Teacher"){
         TeacherData.findOne({"User":teacher_user}).then((result) => {
@@ -228,9 +228,9 @@ router.post("/update", (req,res)=>{
                     Time:new Date().toLocaleTimeString([],{hour: '2-digit',minute: '2-digit'}),
                     date:fun.formatDate(new Date())},
             })
-            console.log(data)
             if(req.body.Temp >= 38){client.pushMessage(to=userid,{type:"text",text:`${result.TeacherName}\nรหัสของคุณคือ : ${data.Detail.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})}
             Data.save(data)
+            console.log(JSON.stringify({MSG:"Data has saved", DateAndTime : new Date().toLocaleString()}))
     })
     }
     res.redirect("/")

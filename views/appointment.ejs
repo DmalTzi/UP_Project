@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./image/HDR.ico">
+    <link rel="stylesheet" href="style/style.css">
+    <title>นัดพบ</title>
+</head>
+<body>
+<%- include('nav') %>
+    <div class="container">
+        <h1>ตารางการนัดพบคุณครู</h1>
+        <form class="login-box" action="/appointment/send" method="post">
+            <div class="date-container">
+                <div class="img-date"><a href="/image/study_table.jpg"><img src="./image/study_table.jpg" alt=""></a></div>
+                <div class="date-content">
+                    <div class="date-input">
+                        <label for="DatePromise">เลือกวันเดือนปี</label>
+                        <input type="date" name="DatePromise" required>
+                    </div>
+                    <div class="classnum">
+                        <label for="ClassPromise">เลือกคาบเรียน</label>
+                        <select name="ClassPromise" id="">
+                            <option value="none">คาบ</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button class="login-btn">ยืนยัน</button>
+        </form>
+    </div>
+    <footer class="footer">
+    </footer>
+</body>
+</html>
