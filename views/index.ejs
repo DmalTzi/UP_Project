@@ -12,7 +12,7 @@
     <%- include('nav') %>
     <div class="container">
         <h1>สำหรับนักเรียน</h1>
-        <form class="login-box" onsubmit="send(event)" method="post" action="/student_sign_in">
+        <form class="login-box" method="post" action="/student_sign_in">
             <div class="main-login-box">
                 <input type="text" name="UserBy" value="Student" hidden>
                 <label for="StudentNumber">เลขประจำตัวนักเรียน</label>
@@ -52,10 +52,5 @@
     </div>
     <footer class="footer">
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-
-    <script src="script/index.js"></script>
 </body>
 </html>

@@ -23,6 +23,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmalTzi/UP_Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DmalTzi/UP_Project/issues"
+  },
+  "homepage": "https://github.com/DmalTzi/UP_Project#readme",
   "description": ""
 }

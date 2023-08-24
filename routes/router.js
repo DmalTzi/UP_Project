@@ -2,7 +2,6 @@ const line = require("@line/bot-sdk")
 const express = require('express')
 const router = express.Router()
 const dotenv = require("dotenv")
-const axios = require("axios").default
 const env = dotenv.config().parsed
 const Data = require("../model/Data")
 const StudentData = require('../model/StudentData')
@@ -18,9 +17,12 @@ const lineConfig = {
 const client = new line.Client(lineConfig)
 
 router.get("/",(req,res)=>{
-    res.render("index")
+    res.render("lifflogin")
 })
 
+router.get("/sign_in",(req,res)=>{
+    res.render("index")
+})
 
 
 router.get("/teacher", (req,res)=>{
@@ -121,13 +123,13 @@ router.post("/approve", (req,res)=>{
 })
 
 router.post("/api/v1/link-richmenu", (req,res)=>{
+    console.log("api richmenu on")
     console.log(req.body)
     userid = req.body.userId
     console.log(userid)
     res.json({
         data : "hello"
     })
-    // res.redirect('/student_sign_in')
 })
 
 router.get("/api/v1/hello", (req,res)=>{
@@ -240,7 +242,7 @@ router.post("/update", (req,res)=>{
 // router.post("/webhook", line.middleware(lineConfig), async (req,res)=>{
 //     try{
 //         const events = req.body.events
-//         // console.log("event=>>>>>>",events)
+//         console.log("event=>>>>>>",events)
 //         return events.length > 0 ? await events.map(item => handleEvent(item)) : res.status(200).send("ok")
 //     } catch (error){
 //         console.log(error)
@@ -250,7 +252,7 @@ router.post("/update", (req,res)=>{
 
 // const handleEvent = async (event)=>{
 //     console.log(event)
-//     return client.pushMessage(to="U8ceb07e1a18493975adbcbacf9b63368",{type:"text",text:"Hello World Test"})
+//     // return client.pushMessage(to="U8ceb07e1a18493975adbcbacf9b63368",{type:"text",text:"Hello World Test"})
 // }
 
 module.exports = router
