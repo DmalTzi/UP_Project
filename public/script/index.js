@@ -11,7 +11,7 @@ function main(){
         liff.getProfile().then(profile =>{
             userId = profile.userId
             console.log("User Id ====> ", userId)
-            const result = axios.post("https://fe59-2405-9800-b911-1c9f-1c08-2a5d-b121-cfea.ngrok-free.app/api/liff/login", {
+            const result = axios.post("https://hdrproject.onrender.com/api/liff/login", {
                 userId:userId
             })
             window.location.href = "/sign_in";
