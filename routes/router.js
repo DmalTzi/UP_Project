@@ -70,8 +70,8 @@ router.post("/teacher/login",(req,res)=>{
 
 router.get("/admin", (req,res)=>{
     fil_topic = req.query.Topic_show
+    console.log(fil_topic)
     Data.find().then((result) => {
-        // console.log(result)
         if (fil_topic == undefined || fil_topic == "All"){
             res.render("admin", {data:result})
         }else if(fil_topic == "รอครูอนุมัติ"){
@@ -102,6 +102,7 @@ router.get("/admin/:serial", (req,res)=>{
 })
 
 router.post("/approve", (req,res)=>{
+    console.log('topic ===> ',fil_topic)
     let update_id = req.body.update_id
     console.log("update_id : ",update_id)
     let data = {
@@ -132,7 +133,11 @@ router.post("/approve", (req,res)=>{
     if(req.body.TeacherName)client.pushMessage(to=req.body.userid,{type:"text",text:`${req.body.TeacherName}\nรหัสของคุณคือ : ${req.body.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`});
     else if (req.body.StudentName)client.pushMessage(to=req.body.userid,{type:"text",text:`${req.body.StudentName}\nรหัสของคุณคือ : ${req.body.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})
     Data.findByIdAndUpdate(update_id, data, {useFindAndModify:false}).exec(err=>{
-        res.redirect(`/admin?Topic_show=${fil_topic}`)
+        if(fil_topic){
+            res.redirect(`/admin?Topic_show=${fil_topic}`)
+        }else{
+            res.redirect('/admin')
+        }
     })
 
     // console.log(update)
