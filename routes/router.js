@@ -108,7 +108,49 @@ router.get("/admin/:serial", (req,res)=>{
     })
 })
 
+router.post("/disapprove", (req,res)=>{
+    console.log("disapprove")
+     console.log(JSON.stringify({DateAndTime : new Date().toLocaleString(), api:"/disapprove"}))
+     console.log('topic ===> ',fil_topic)
+     let update_id = req.body.update_id
+     console.log("update_id : ",update_id)
+     let data = {
+         userId:req.body.userid,
+         TeacherUser:req.body.TeacherUser,
+         TeacherName:req.body.TeacherName,
+         StudentNumber:req.body.StudentNumber,
+         StudentName:req.body.StudentName,
+         Room:req.body.Room,
+         Number:req.body.Number,
+         Symptom:req.body.symptom,
+         Age:req.body.Age,
+         Weight:req.body.Weight,
+         Cause:req.body.Cause,
+         Range:req.body.Range,
+         Temp:req.body.Temp,
+         Date_poo:req.body.Deta_poo,
+         Time_poo:req.body.Time_poo,
+         Poo_time:req.body.Poo_time,
+         Detail:{
+             UserBy:req.body.Userby,
+             Serial:req.body.Serial,
+             SendBy:"ไม่อนุมัติ",
+             SendStatus:false,
+             Time:req.body.Time,
+             date:req.body.date},
+     }
+     client.pushMessage(to=req.body.userid,{type:"text",text:`ให้เลือกเมนู\n>>>นัดพบ<<<\nเพื่อขอนับพบเข้ามารับยาภายในวันนี้`})
+     Data.findByIdAndUpdate(update_id, data, {useFindAndModify:false}).exec(err=>{
+         if(fil_topic){
+             res.redirect(`/admin?Topic_show=${fil_topic}`)
+         }else{
+             res.redirect('/admin')
+         }
+     })
+})
+
 router.post("/approve", (req,res)=>{
+    console.log("approved")
     console.log(JSON.stringify({DateAndTime : new Date().toLocaleString(), api:"/approve"}))
     console.log('topic ===> ',fil_topic)
     let update_id = req.body.update_id
@@ -147,8 +189,6 @@ router.post("/approve", (req,res)=>{
             res.redirect('/admin')
         }
     })
-
-    // console.log(update)
 })
 
 

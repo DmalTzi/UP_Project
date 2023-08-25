@@ -15,7 +15,7 @@
                 <% if(item.Detail.SendStatus == false){%>
                 <% sendstatus = "ยังไม่ได้รับยา"%>
                 <%}else if(item.Detail.SendStatus == true){  %>
-                <% sendstatus = "รับยาเรียนร้อย"%>
+                <% sendstatus = "รับยาเรียบร้อย"%>
                 <% } %>
                 <% if(item.Detail.UserBy == "Teacher"){%>
                     <p><%= item.TeacherName %></p>
@@ -67,54 +67,105 @@
             <div class="info-time-card">
                 <p><%= item.Detail.date%></p>
                 <p><%= item.Detail.Time%></p>
-                <form action="/approve" method="post">
-                    <% if(item.Detail.UserBy == "Teacher"){%>
-                        <input hidden type="text" name="userid" value="<%= item.userId %>">
-                        <input hidden type="text" name="update_id" value="<%= item._id %>">
-                        <input hidden type="text" name="UserBy" value="<%= item.Detail.UserBy %>">
-                        <input hidden type="text" name="TeacherName" value="<%= item.TeacherName %>">
-                        <input hidden type="text" name="TeacherUser" value="<%= item.TeacherUser %>">
-                        <input hidden type="text" name="Room" value="<%= item.Room %>">
-                        <input hidden type="text" name="Number" value="<%= item.Number %>">
-                        <input hidden type="text" name="Symptom" value="<%= item.Symptom %>">
-                        <input hidden type="text" name="Age" value="<%= item.Age %>">
-                        <input hidden type="text" name="Weight" value="<%= item.Weight %>">
-                        <input hidden type="text" name="Cause" value="<%= item.Cause %>">
-                        <input hidden type="text" name="Range" value="<%= item.Range %>">
-                        <input hidden type="text" name="Temp" value="<%= item.Temp %>">
-                        <input hidden type="text" name="Date_poo" value="<%= item.Date_poo %>">
-                        <input hidden type="text" name="Poo_time" value="<%= item.Poo_time %>">
-                        <input hidden type="text" name="Time_poo" value="<%= item.Time_poo %>">
-                        <input hidden type="text" name="Serial" value="<%= item.Detail.Serial %>">
-                        <input hidden type="text" name="Time" value="<%= item.Detail.Time %>">
-                        <input hidden type="text" name="date" value="<%= item.Detail.date %>">
-                    <%}else if(item.Detail.UserBy == "Student"){%>
-                        <input hidden type="text" name="userid" value="<%= item.userId %>">
-                        <input hidden type="text" name="update_id" value="<%= item._id %>">
-                        <input hidden type="text" name="Userby" value="<%= item.Detail.UserBy %>">
-                        <input hidden type="text" name="StudentName" value="<%= item.StudentName %>">
-                        <input hidden type="text" name="StudentNumber" value="<%= item.StudentNumber %>">
-                        <input hidden type="text" name="Room" value="<%= item.Room %>">
-                        <input hidden type="text" name="Number" value="<%= item.Number %>">
-                        <input hidden type="text" name="Symptom" value="<%= item.Symptom %>">
-                        <input hidden type="text" name="Age" value="<%= item.Age %>">
-                        <input hidden type="text" name="Weight" value="<%= item.Weight %>">
-                        <input hidden type="text" name="Cause" value="<%= item.Cause %>">
-                        <input hidden type="text" name="Range" value="<%= item.Range %>">
-                        <input hidden type="text" name="Temp" value="<%= item.Temp %>">
-                        <input hidden type="text" name="Date_poo" value="<%= item.Date_poo %>">
-                        <input hidden type="text" name="Poo_time" value="<%= item.Poo_time %>">
-                        <input hidden type="text" name="Time_poo" value="<%= item.Time_poo %>">
-                        <input hidden type="text" name="Serial" value="<%= item.Detail.Serial %>">
-                        <input hidden type="text" name="Time" value="<%= item.Detail.Time %>">
-                        <input hidden type="text" name="date" value="<%= item.Detail.date %>">
-                    <% } %>
-                    
-                    <% if(item.Detail.SendBy == "รอครูอนุมัติ"){ %>
-                    <button class="approve-btn">อนุมัติ</button>
-                    <%}%>
-                    <!-- <button type="submit" class="disapprove-btn">ไม่อนุมัติ</button> -->
-                </form>
+                <div class="approved-card-btn">
+                    <form action="/approve" method="post">
+                        <% if(item.Detail.UserBy == "Teacher"){%>
+                            <input hidden type="text" name="userid" value="<%= item.userId %>">
+                            <input hidden type="text" name="update_id" value="<%= item._id %>">
+                            <input hidden type="text" name="UserBy" value="<%= item.Detail.UserBy %>">
+                            <input hidden type="text" name="TeacherName" value="<%= item.TeacherName %>">
+                            <input hidden type="text" name="TeacherUser" value="<%= item.TeacherUser %>">
+                            <input hidden type="text" name="Room" value="<%= item.Room %>">
+                            <input hidden type="text" name="Number" value="<%= item.Number %>">
+                            <input hidden type="text" name="Symptom" value="<%= item.Symptom %>">
+                            <input hidden type="text" name="Age" value="<%= item.Age %>">
+                            <input hidden type="text" name="Weight" value="<%= item.Weight %>">
+                            <input hidden type="text" name="Cause" value="<%= item.Cause %>">
+                            <input hidden type="text" name="Range" value="<%= item.Range %>">
+                            <input hidden type="text" name="Temp" value="<%= item.Temp %>">
+                            <input hidden type="text" name="Date_poo" value="<%= item.Date_poo %>">
+                            <input hidden type="text" name="Poo_time" value="<%= item.Poo_time %>">
+                            <input hidden type="text" name="Time_poo" value="<%= item.Time_poo %>">
+                            <input hidden type="text" name="Serial" value="<%= item.Detail.Serial %>">
+                            <input hidden type="text" name="Time" value="<%= item.Detail.Time %>">
+                            <input hidden type="text" name="date" value="<%= item.Detail.date %>">
+                        <%}else if(item.Detail.UserBy == "Student"){%>
+                            <input hidden type="text" name="userid" value="<%= item.userId %>">
+                            <input hidden type="text" name="update_id" value="<%= item._id %>">
+                            <input hidden type="text" name="Userby" value="<%= item.Detail.UserBy %>">
+                            <input hidden type="text" name="StudentName" value="<%= item.StudentName %>">
+                            <input hidden type="text" name="StudentNumber" value="<%= item.StudentNumber %>">
+                            <input hidden type="text" name="Room" value="<%= item.Room %>">
+                            <input hidden type="text" name="Number" value="<%= item.Number %>">
+                            <input hidden type="text" name="Symptom" value="<%= item.Symptom %>">
+                            <input hidden type="text" name="Age" value="<%= item.Age %>">
+                            <input hidden type="text" name="Weight" value="<%= item.Weight %>">
+                            <input hidden type="text" name="Cause" value="<%= item.Cause %>">
+                            <input hidden type="text" name="Range" value="<%= item.Range %>">
+                            <input hidden type="text" name="Temp" value="<%= item.Temp %>">
+                            <input hidden type="text" name="Date_poo" value="<%= item.Date_poo %>">
+                            <input hidden type="text" name="Poo_time" value="<%= item.Poo_time %>">
+                            <input hidden type="text" name="Time_poo" value="<%= item.Time_poo %>">
+                            <input hidden type="text" name="Serial" value="<%= item.Detail.Serial %>">
+                            <input hidden type="text" name="Time" value="<%= item.Detail.Time %>">
+                            <input hidden type="text" name="date" value="<%= item.Detail.date %>">
+                        <% } %>
+                        
+                        <% if(item.Detail.SendBy == "รอครูอนุมัติ"){ %>
+                        <button class="approve-btn">อนุมัติ</button>
+                        <%}%>
+                    </form>
+
+                    <form action="/disapprove" method="post">
+                        <% if(item.Detail.UserBy == "Teacher"){%>
+                            <input hidden type="text" name="userid" value="<%= item.userId %>">
+                            <input hidden type="text" name="update_id" value="<%= item._id %>">
+                            <input hidden type="text" name="UserBy" value="<%= item.Detail.UserBy %>">
+                            <input hidden type="text" name="TeacherName" value="<%= item.TeacherName %>">
+                            <input hidden type="text" name="TeacherUser" value="<%= item.TeacherUser %>">
+                            <input hidden type="text" name="Room" value="<%= item.Room %>">
+                            <input hidden type="text" name="Number" value="<%= item.Number %>">
+                            <input hidden type="text" name="Symptom" value="<%= item.Symptom %>">
+                            <input hidden type="text" name="Age" value="<%= item.Age %>">
+                            <input hidden type="text" name="Weight" value="<%= item.Weight %>">
+                            <input hidden type="text" name="Cause" value="<%= item.Cause %>">
+                            <input hidden type="text" name="Range" value="<%= item.Range %>">
+                            <input hidden type="text" name="Temp" value="<%= item.Temp %>">
+                            <input hidden type="text" name="Date_poo" value="<%= item.Date_poo %>">
+                            <input hidden type="text" name="Poo_time" value="<%= item.Poo_time %>">
+                            <input hidden type="text" name="Time_poo" value="<%= item.Time_poo %>">
+                            <input hidden type="text" name="Serial" value="<%= item.Detail.Serial %>">
+                            <input hidden type="text" name="Time" value="<%= item.Detail.Time %>">
+                            <input hidden type="text" name="date" value="<%= item.Detail.date %>">
+                        <%}else if(item.Detail.UserBy == "Student"){%>
+                            <input hidden type="text" name="userid" value="<%= item.userId %>">
+                            <input hidden type="text" name="update_id" value="<%= item._id %>">
+                            <input hidden type="text" name="Userby" value="<%= item.Detail.UserBy %>">
+                            <input hidden type="text" name="StudentName" value="<%= item.StudentName %>">
+                            <input hidden type="text" name="StudentNumber" value="<%= item.StudentNumber %>">
+                            <input hidden type="text" name="Room" value="<%= item.Room %>">
+                            <input hidden type="text" name="Number" value="<%= item.Number %>">
+                            <input hidden type="text" name="Symptom" value="<%= item.Symptom %>">
+                            <input hidden type="text" name="Age" value="<%= item.Age %>">
+                            <input hidden type="text" name="Weight" value="<%= item.Weight %>">
+                            <input hidden type="text" name="Cause" value="<%= item.Cause %>">
+                            <input hidden type="text" name="Range" value="<%= item.Range %>">
+                            <input hidden type="text" name="Temp" value="<%= item.Temp %>">
+                            <input hidden type="text" name="Date_poo" value="<%= item.Date_poo %>">
+                            <input hidden type="text" name="Poo_time" value="<%= item.Poo_time %>">
+                            <input hidden type="text" name="Time_poo" value="<%= item.Time_poo %>">
+                            <input hidden type="text" name="Serial" value="<%= item.Detail.Serial %>">
+                            <input hidden type="text" name="Time" value="<%= item.Detail.Time %>">
+                            <input hidden type="text" name="date" value="<%= item.Detail.date %>">
+                        <% } %>
+                        
+                        <% if(item.Detail.SendBy == "รอครูอนุมัติ"){ %>
+                        <button class="disapprove-btn">ไม่อนุมัติ</button>
+                        <%}%>
+                        <!-- <button type="submit" class="disapprove-btn">ไม่อนุมัติ</button> -->
+                    </form>
+                </div>
+                
             </div>
             
         </div>
