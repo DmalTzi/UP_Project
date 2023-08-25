@@ -139,7 +139,7 @@ router.post("/disapprove", (req,res)=>{
              Time:req.body.Time,
              date:req.body.date},
      }
-     client.pushMessage(to=req.body.userid,{type:"text",text:`ให้เลือกเมนู\n>>>นัดพบ<<<\nเพื่อขอนับพบเข้ามารับยาภายในวันนี้`})
+     client.pushMessage(to=req.body.userid,{type:"text",text:`ให้เลือกเมนู\n>>>ขอพบครู<<<\nเพื่อเข้ามารับยาภายในวันนี้`})
      Data.findByIdAndUpdate(update_id, data, {useFindAndModify:false}).exec(err=>{
          if(fil_topic){
              res.redirect(`/admin?Topic_show=${fil_topic}`)
