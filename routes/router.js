@@ -204,9 +204,9 @@ router.post("/update", (req,res)=>{
                 Cause:req.body.Cause,
                 Range:req.body.Range,
                 Temp:req.body.Temp,
-                Date_poo:req.body.Deta_poo,
-                Time_poo:req.body.time_poo,
-                Poo_time:req.body.poo_time,
+                Date_poo:req.body.Date_poo,
+                Time_poo:req.body.Time_poo,
+                Poo_time:req.body.Poo_time,
                 Detail:{
                     UserBy:userby,
                     Serial:fun.random_serial(),
