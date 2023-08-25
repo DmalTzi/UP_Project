@@ -40,11 +40,13 @@ router.get("/emergency", (req,res)=>{
 router.post('/appointment/send', (req,res)=>{
     client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',
         {type:"text",text:`การแจ้งขอนัดพบ \nคาบเรียนที่ : ${ClassPromise} \nของวันที่ : ${DatePromise}`})
+        res.redirect('/')
 })
 
 router.post('/emergency/send', (req,res)=>{
     client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',
         {type:"text",text:`มีเหตุด่วน!!! \nชื่อ : ${req.body.EmergencyName} ได้แจ้งเหตุด่วน \nเบอร์ติดต่อ : ${req.body.Tel} \nสถานที่เกิดเหตุ : ${req.body.WhereEvergency} \nอาการของผู้ประสบเหตุ : ${req.body.WhatHappen}`})
+        res.redirect('/')
 })
 
 router.post("/teacher/login",(req,res)=>{
