@@ -10,6 +10,7 @@
 <body>
     <%- include('nav') %>
     <div class="main-content-container">
+        <% Object.values(data).forEach(function(item){%>
         <div class="information-card">
             <div class="info-name-card">
                 <% if(item.Detail.SendStatus == false){%>
@@ -165,10 +166,9 @@
                         <!-- <button type="submit" class="disapprove-btn">ไม่อนุมัติ</button> -->
                     </form>
                 </div>
-                
             </div>
-            
         </div>
+        <%})%>
     </div>
     <footer class="footer">
     </footer>

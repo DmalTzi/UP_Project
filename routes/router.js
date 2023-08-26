@@ -102,10 +102,16 @@ router.get("/admin", (req,res)=>{
 })
 
 router.get("/admin/:serial", (req,res)=>{
-    let serial_name = req.params.serial
-    Data.findOne({"Detail.Serial":serial_name}).then((result) => {
-        res.render("detail", {item:result})
-    })
+    let serial = req.params.serial
+    if (serial[0] == 'T'){
+        Data.find({"TeacherUser":serial}).then((result) => {
+            res.render("detail", {data:result})
+        })
+    }else{
+        Data.find({"StudentNumber":serial}).then((result) => {
+            res.render("detail", {data:result})
+        })
+    }
 })
 
 router.post("/disapprove", (req,res)=>{
