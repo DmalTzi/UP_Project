@@ -1,4 +1,6 @@
 const Data = require("../model/Data")
+const XLSX = require("xlsx")
+const fs = require('fs')
 
 function random_serial(){
     console.log("i'm in random")
@@ -29,7 +31,64 @@ function formatDate(date) {
     ].join('/');
 }
 
-module.exports = {formatDate, random_serial}
+
+
+async function fetchData() {
+    var data = [];
+    return new Promise(resolve => {
+        Data.find().then((res)=>{
+            res.forEach(async (res) => {
+                if(res.Detail.UserBy === "Student"){
+                    dic = {
+                        Identity: String(res.StudentNumber), 
+                        Name: res.StudentName, 
+                        Room: res.Room, 
+                        Number: res.Number, 
+                        Symptom: res.Symptom, 
+                        Age: res.Age, 
+                        Weight: res.Weight,
+                        Cause: res.Cause,
+                        Range: res.Range,
+                        Temp: res.Temp,
+                        Date_poo: res.Date_poo,
+                        Time_poo: res.Time_poo,
+                        Poo_time: res.Poo_time,
+                        UserBy: res.Detail.UserBy,
+                        Serial: res.Detail.Serial,
+                        SendBy: res.Detail.SendBy,
+                        SendStatus: res.Detail.SendStatus,
+                        Time: res.Detail.Time,
+                        Date : res.Detail.date,
+                    }
+                }else if(res.Detail.UserBy === "Teacher"){
+                    dic = {
+                        Identity: res.TeacherUser, 
+                        Name: res.TeacherName, 
+                        Symptom: res.Symptom, 
+                        Age: res.Age, 
+                        Weight: res.Weight,
+                        Cause: res.Cause,
+                        Range: res.Range,
+                        Temp: res.Temp,
+                        Date_poo: res.Date_poo,
+                        Time_poo: res.Time_poo,
+                        Poo_time: res.Poo_time,
+                        UserBy: res.Detail.UserBy,
+                        Serial: res.Detail.Serial,
+                        SendBy: res.Detail.SendBy,
+                        SendStatus: res.Detail.SendStatus,
+                        Time: res.Detail.Time,
+                        Date : res.Detail.date,
+                    }
+                }
+                data.push(dic)
+            });
+            resolve(data);
+        })
+    });
+}
+
+module.exports = {formatDate, random_serial, fetchData}
 
 
 

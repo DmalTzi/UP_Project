@@ -7,6 +7,7 @@ const Data = require("../model/Data")
 const StudentData = require('../model/StudentData')
 const fun = require("./function")
 const TeacherData = require('../model/TeacherData')
+const XLSX = require("xlsx")
 
 
 const lineConfig = {
@@ -296,5 +297,20 @@ router.post("/update", (req,res)=>{
     }
     res.redirect("/")
 })
+
+router.get("/download/xlsx/data", async (req, res) => {
+    let xlsx_data = await fun.fetchData();
+
+    var ws = XLSX.utils.json_to_sheet(xlsx_data);
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+    res.setHeader('Content-Disposition', 'attachment; filename=DaTa.xlsx');
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+    const excelData = XLSX.write(wb, { bookType: 'xlsx', type: 'buffer' });
+
+    res.end(excelData);
+});
 
 module.exports = router

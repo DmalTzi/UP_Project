@@ -282,7 +282,7 @@ select{
 }
 
 .nav-filter-bar-card input, select, button{
-    width: 100%;
+    width: 50%;
     margin-right: 1rem;
 }
 
@@ -290,18 +290,33 @@ select{
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 20%;
+    max-width: 30%;
     background-color: rgb(48, 109, 241);
     color: white;
-    padding: .5rem 2rem;
+    padding: .5rem 1rem;
     border-radius: .5rem;
+    border: 2px solid black;
+}
+
+.download-btn{
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    background-color: rgb(48, 109, 241);
+    color: white;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    border: 2px solid black;
+    text-decoration: none;
 }
 
 .nav-other-bar-card {
     display: flex;
     justify-content: end;
     align-items: center;
-    width: 50%;
+    width: 40%;
 
 }
 
@@ -398,4 +413,3 @@ select{
     margin-left: 1rem;
     width: 90%;
 }
-
