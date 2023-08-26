@@ -10,7 +10,6 @@ function main(){
         }
         liff.getProfile().then(profile =>{
             userId = profile.userId
-            console.log("User Id ====> ", userId)
             const result = axios.post("https://hdrproject.onrender.com/api/liff/login", {
                 userId:userId
             })

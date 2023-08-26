@@ -1,3 +1,4 @@
+const PORT = 2000
 const express = require("express")
 const path = require("path")
 const app = express()
@@ -18,6 +19,6 @@ app.use(express.json());
 
 app.use(router)
 
-app.listen(2000, ()=>{
-    console.log("listening on 2000")
+app.listen(PORT, ()=>{
+    console.log(`Listen Running in ${PORT}`)
 })

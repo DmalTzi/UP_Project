@@ -356,6 +356,8 @@ select{
     justify-content: start;
     align-items: center;
     padding: .0rem .3rem;
+    width: 100%;
+
 }
 
 .info-time-card p{
@@ -363,21 +365,33 @@ select{
     font-size: 10px;
 }
 
+.approved-card-btn {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .approve-btn {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(48, 211, 48);
-    padding: .1rem;
+    padding: .1rem .5rem;
     border-radius: .5rem;
+    margin-left: 1rem;
+    width: 100%;
 }
+
 
 .disapprove-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
-    padding: .1rem;
+    background-color: rgb(167, 18, 18);
+    padding: .1rem .5rem;
     border-radius: .5rem;
+    margin-left: 1rem;
+    width: 90%;
 }
 

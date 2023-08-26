@@ -47,5 +47,4 @@ module.exports = Data
 
 module.exports.save=function(model,data){
     model.save(data)
-    console.log("Saved")
 }
