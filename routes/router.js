@@ -132,7 +132,7 @@ router.post("/disapprove", (req,res)=>{
          Time_poo:req.body.Time_poo,
          Poo_time:req.body.Poo_time,
          Detail:{
-             UserBy:req.body.Userby,
+             UserBy:req.body.UserBy,
              Serial:req.body.Serial,
              SendBy:"ไม่อนุมัติ",
              SendStatus:false,
@@ -173,7 +173,7 @@ router.post("/approve", (req,res)=>{
         Time_poo:req.body.Time_poo,
         Poo_time:req.body.Poo_time,
         Detail:{
-            UserBy:req.body.Userby,
+            UserBy:req.body.UserBy,
             Serial:req.body.Serial,
             SendBy:"อนุมัติโดยครู",
             SendStatus:false,
@@ -228,6 +228,7 @@ router.post("/update", (req,res)=>{
     if(req.body.Temp >= 38){
         SendBy = "อนุมัติโดยระบบ"
     }else{
+        client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',{type:"text",text:`มีการขอยาเข้ามา \n กรุณาตรวจสอบและพิจารณาการให้ยาได้ที่ \nhttps://liff.line.me/2000223015-BYgnOXy0`})
         SendBy = "รอครูอนุมัติ"
     }
     if(userby == "Student"){
