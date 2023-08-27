@@ -262,7 +262,7 @@ router.post("/update", (req,res)=>{
                     SendBy:SendBy,
                     SendStatus:false,
                     Time:DateTime.now().setZone('Asia/Bangkok').toFormat('hh:mm a'),
-                    date:DateTime.now().toFormat(`dd/MM/${currentDate.year + 543}`)},
+                    date:DateTime.now().toFormat(`dd/MM/${DateTime.now().year + 543}`)},
             })
             if(req.body.Temp >= 38){client.pushMessage(to=userid,{type:"text",text:`${result.StudentName}\nรหัสของคุณคือ : ${data.Detail.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})}
             Data.save(data)
@@ -289,7 +289,7 @@ router.post("/update", (req,res)=>{
                     SendBy:SendBy,
                     SendStatus:false,
                     Time:DateTime.now().setZone('Asia/Bangkok').toFormat('hh:mm a'),
-                    date:DateTime.now().toFormat(`dd/MM/${currentDate.year + 543}`)},
+                    date:DateTime.now().toFormat(`dd/MM/${DateTime.now().year + 543}`)},
             })
             if(req.body.Temp >= 38){client.pushMessage(to=userid,{type:"text",text:`${result.TeacherName}\nรหัสของคุณคือ : ${data.Detail.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})}
             Data.save(data)
