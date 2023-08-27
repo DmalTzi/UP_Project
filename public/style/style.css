@@ -122,12 +122,14 @@ body{
 .sub-login-box{
     display: flex;
     justify-content: space-around;
+    justify-content: center;
 }
 
 .sub-sub-login-box {
     display: flex;
+    /* justify-content: center; */
     flex-direction: column;
-    width: 80%;
+    width: 1000%;
 }
 
 input[type=text], input[type=password],input[type=number], textarea, input[type=file], input[type=date] {
@@ -141,22 +143,16 @@ input[type=text], input[type=password],input[type=number], textarea, input[type=
 
 }
 
-select{
+.dorpdown-select{
+    /* background-color: #AC0000; */
     background-color: #D9D9D9;
-    width: 100%;
-    padding: 12px 20px 12px 9px;
+    width: 80%;
+    /* letter-spacing: 5; */
+    padding: 12px 10px 12px 9px;
     border-radius: 1rem;
     border: 1px solid #ccc;
     box-sizing: border-box;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-}
-
-.sub-sub-login-box{
-    margin: 1rem;
-}
-
-.sub-sub-login-box input{
-    width: 100%;
 }
 
 .login-btn {

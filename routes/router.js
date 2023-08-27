@@ -188,8 +188,8 @@ router.post("/approve", (req,res)=>{
             Time:req.body.Time,
             date:req.body.date},
     }
-    if(req.body.TeacherName)client.pushMessage(to=req.body.userid,{type:"text",text:`${req.body.TeacherName}\nรหัสของคุณคือ : ${req.body.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`});
-    else if (req.body.StudentName)client.pushMessage(to=req.body.userid,{type:"text",text:`${req.body.StudentName}\nรหัสของคุณคือ : ${req.body.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})
+    if(req.body.TeacherName)client.pushMessage(to=req.body.userid,{type:"text",text:`${req.body.TeacherName}\nรหัสของคุณคือ : ${req.body.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาลได้เลยนะคะ`});
+    else if (req.body.StudentName)client.pushMessage(to=req.body.userid,{type:"text",text:`${req.body.StudentName}\nรหัสของคุณคือ : ${req.body.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาลได้เลยนะคะ`})
     Data.findByIdAndUpdate(update_id, data, {useFindAndModify:false}).exec(err=>{
         if(fil_topic){
             res.redirect(`/admin?Topic_show=${fil_topic}`)
@@ -236,7 +236,12 @@ router.post("/update", (req,res)=>{
     if(req.body.Temp >= 38){
         SendBy = "อนุมัติโดยระบบ"
     }else{
-        client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',{type:"text",text:`มีการขอยาเข้ามา \n กรุณาตรวจสอบและพิจารณาการให้ยาได้ที่ \nhttps://liff.line.me/2000223015-BYgnOXy0`})
+        if(studentnumber){
+            client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',{type:"text",text:`มีการขอยาเข้ามา \n กรุณาตรวจสอบและพิจารณาการให้ยาได้ที่ \nhttps://hdrproject.onrender.com/admin/${studentnumber}`})
+
+        }else{
+            client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',{type:"text",text:`มีการขอยาเข้ามา \n กรุณาตรวจสอบและพิจารณาการให้ยาได้ที่ \nhttps://hdrproject.onrender.com/admin/${teacher_user}`})
+        }
         SendBy = "รอครูอนุมัติ"
     }
     if(userby == "Student"){
@@ -292,6 +297,7 @@ router.post("/update", (req,res)=>{
                     date:DateTime.now().toFormat(`dd/MM/${DateTime.now().year + 543}`)},
             })
             if(req.body.Temp >= 38){client.pushMessage(to=userid,{type:"text",text:`${result.TeacherName}\nรหัสของคุณคือ : ${data.Detail.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})}
+            else{client.pushMessage(to=userid,{type:"text",text:`คุณครูได้ทราบเรื่องการขอรับยาเรียบร้อยแล้ว\nกรุณารอการยืนยันจากคุณครูสักครู่นะคะ...`})}
             Data.save(data)
             console.log(JSON.stringify({MSG:"Data has saved", DateAndTime : new Date().toLocaleString(), DataIs:data}))
     })
