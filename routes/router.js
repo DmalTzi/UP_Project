@@ -7,6 +7,7 @@ const Data = require("../model/Data")
 const StudentData = require('../model/StudentData')
 const fun = require("./function")
 const TeacherData = require('../model/TeacherData')
+const { DateTime } = require('luxon');
 const XLSX = require("xlsx")
 
 
@@ -260,8 +261,8 @@ router.post("/update", (req,res)=>{
                     Serial:fun.random_serial(),
                     SendBy:SendBy,
                     SendStatus:false,
-                    Time:new Date().toLocaleTimeString([],{hour: '2-digit',minute: '2-digit'}),
-                    date:fun.formatDate(new Date())},
+                    Time:DateTime.now().setZone('Asia/Bangkok').toFormat('hh:mm a'),
+                    date:DateTime.now().toFormat(`dd/MM/${currentDate.year + 543}`)},
             })
             if(req.body.Temp >= 38){client.pushMessage(to=userid,{type:"text",text:`${result.StudentName}\nรหัสของคุณคือ : ${data.Detail.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})}
             Data.save(data)
@@ -287,8 +288,8 @@ router.post("/update", (req,res)=>{
                     Serial:fun.random_serial(),
                     SendBy:SendBy,
                     SendStatus:false,
-                    Time:new Date().toLocaleTimeString([],{hour: '2-digit',minute: '2-digit'}),
-                    date:fun.formatDate(new Date())},
+                    Time:DateTime.now().setZone('Asia/Bangkok').toFormat('hh:mm a'),
+                    date:DateTime.now().toFormat(`dd/MM/${currentDate.year + 543}`)},
             })
             if(req.body.Temp >= 38){client.pushMessage(to=userid,{type:"text",text:`${result.TeacherName}\nรหัสของคุณคือ : ${data.Detail.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})}
             Data.save(data)
