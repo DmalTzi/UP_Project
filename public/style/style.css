@@ -129,7 +129,7 @@ body{
     display: flex;
     /* justify-content: center; */
     flex-direction: column;
-    width: 1000%;
+    width: 100%;
 }
 
 input[type=text], input[type=password],input[type=number], textarea, input[type=file], input[type=date] {
