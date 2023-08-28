@@ -236,12 +236,7 @@ router.post("/update", (req,res)=>{
     if(req.body.Temp >= 38){
         SendBy = "อนุมัติโดยระบบ"
     }else{
-        if(studentnumber !== undefined){
-            client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',{type:"text",text:`มีการขอยาเข้ามา \n กรุณาตรวจสอบและพิจารณาการให้ยาได้ที่ \nhttps://hdrproject.onrender.com/admin/${studentnumber}`})
-
-        }else{
-            client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',{type:"text",text:`มีการขอยาเข้ามา \n กรุณาตรวจสอบและพิจารณาการให้ยาได้ที่ \nhttps://hdrproject.onrender.com/admin/${teacher_user}`})
-        }
+        client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',{type:"text",text:`มีการขอยาเข้ามา \n กรุณาตรวจสอบและพิจารณาการให้ยาได้ที่ \nhttps://liff.line.me/2000223015-BYgnOXy0`})
         SendBy = "รอครูอนุมัติ"
     }
     if(userby == "Student"){
