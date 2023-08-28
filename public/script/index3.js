@@ -13,7 +13,7 @@ function main(){
             const result = axios.post("https://hdrproject.onrender.com/api/liff/login", {
                 userId:userId
             })
-            window.location.href = "/emergency";
+            // window.location.href = "/emergency";
         })
     })
 }
