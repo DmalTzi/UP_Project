@@ -49,14 +49,16 @@ router.post('/appointment/send', (req,res)=>{
     console.log(JSON.stringify({DateAndTime : new Date().toLocaleString(), api:"/appointment/send"}))
     client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',
         {type:"text",text:`การแจ้งขอนัดพบ \nคาบเรียนที่ : ${req.body.ClassPromise} \nของวันที่ : ${req.body.DatePromise}`})
-        res.redirect('/')
+    client.pushMessage(to=userid,{type:"text", text:"คุณครูได้รับข้อมูลแล้ว \nให้มาตรงตามเวลาที่นัดนะคะ"})
+    res.redirect('/')
 })
 
 router.post('/emergency/send', (req,res)=>{
     console.log(JSON.stringify({DateAndTime : new Date().toLocaleString(), api:"/emergency/send"}))
     client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',
         {type:"text",text:`มีเหตุด่วน!!! \nชื่อ : ${req.body.EmergencyName} ได้แจ้งเหตุด่วน \nเบอร์ติดต่อ : ${req.body.Tel} \nสถานที่เกิดเหตุ : ${req.body.WhereEvergency} \nอาการของผู้ประสบเหตุ : ${req.body.WhatHappen}`})
-        res.redirect('/')
+    client.pushMessage(to=userid,{type:"text", text:"คุณครูได้รับเรื่องเหตุด่วนแล้ว \n จะรีบติดต่อกลับโดยเร็วนะคะ"})
+    res.redirect('/')
 })
 
 router.post("/teacher/login",(req,res)=>{

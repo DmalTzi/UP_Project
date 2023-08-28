@@ -237,6 +237,10 @@ input[type=text], input[type=password],input[type=number], textarea, input[type=
     flex-direction: column;
 }
 
+.date-input{
+    margin-right: 1rem;
+}
+
 .img-date {
     width: 50%;
 }
