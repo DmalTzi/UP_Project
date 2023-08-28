@@ -18,14 +18,16 @@ const lineConfig = {
 
 const client = new line.Client(lineConfig)
 
+router.post("/api/liff/login", (req,res)=>{
+    console.log(JSON.stringify({DateAndTime : new Date().toLocaleString(), api:"/api/liff/login"}))
+    userid = req.body.userId
+    console.log(userid)
+})
+
 router.get("/",(req,res)=>{
     res.render("lifflogin")
 })
 
-router.post("/api/liff/login", (req,res)=>{
-    console.log(JSON.stringify({DateAndTime : new Date().toLocaleString(), api:"/api/liff/login"}))
-    userid = req.body.userId
-})
 
 router.get("/sign_in",(req,res)=>{
     res.render("index")
