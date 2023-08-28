@@ -40,6 +40,8 @@ async function fetchData() {
             res.forEach(async (res) => {
                 if(res.Detail.UserBy === "Student"){
                     dic = {
+                        Date : res.Detail.date,
+                        Time: res.Detail.Time,
                         Identity: String(res.StudentNumber), 
                         Name: res.StudentName, 
                         Room: res.Room, 
@@ -57,11 +59,11 @@ async function fetchData() {
                         Serial: res.Detail.Serial,
                         SendBy: res.Detail.SendBy,
                         SendStatus: res.Detail.SendStatus,
-                        Time: res.Detail.Time,
-                        Date : res.Detail.date,
                     }
                 }else if(res.Detail.UserBy === "Teacher"){
                     dic = {
+                        Date : res.Detail.date,
+                        Time: res.Detail.Time,
                         Identity: res.TeacherUser, 
                         Name: res.TeacherName, 
                         Symptom: res.Symptom, 
@@ -77,8 +79,6 @@ async function fetchData() {
                         Serial: res.Detail.Serial,
                         SendBy: res.Detail.SendBy,
                         SendStatus: res.Detail.SendStatus,
-                        Time: res.Detail.Time,
-                        Date : res.Detail.date,
                     }
                 }
                 data.push(dic)
