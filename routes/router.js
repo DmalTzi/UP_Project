@@ -10,8 +10,7 @@ const TeacherData = require('../model/TeacherData')
 const { DateTime } = require('luxon');
 const XLSX = require("xlsx")
 
-
-const lineConfig = {
+    const lineConfig = {
     channelAccessToken: env.ACCESS_TOKEN,
     channelSecret: env.SECRET_TOKEN
 }
@@ -47,18 +46,16 @@ router.get("/emergency", (req,res)=>{
 
 router.post('/appointment/send', (req,res)=>{
     console.log(JSON.stringify({DateAndTime : new Date().toLocaleString(), api:"/appointment/send"}))
-    client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',
-        {type:"text",text:`การแจ้งขอนัดพบ \nคาบเรียนที่ : ${req.body.ClassPromise} \nของวันที่ : ${req.body.DatePromise}`})
+    fun.appointment_nofi()
     client.pushMessage(to=userid,{type:"text", text:"คุณครูได้รับข้อมูลแล้ว \nให้มาตรงตามเวลาที่นัดนะคะ"})
-    res.redirect('/')
+    res.redirect('/appointment')
 })
 
 router.post('/emergency/send', (req,res)=>{
     console.log(JSON.stringify({DateAndTime : new Date().toLocaleString(), api:"/emergency/send"}))
-    client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',
-        {type:"text",text:`มีเหตุด่วน!!! \nชื่อ : ${req.body.EmergencyName} ได้แจ้งเหตุด่วน \nเบอร์ติดต่อ : ${req.body.Tel} \nสถานที่เกิดเหตุ : ${req.body.WhereEvergency} \nอาการของผู้ประสบเหตุ : ${req.body.WhatHappen}`})
+    fun.emergency_nofi()
     client.pushMessage(to=userid,{type:"text", text:"คุณครูได้รับเรื่องเหตุด่วนแล้ว \n จะรีบติดต่อกลับโดยเร็วนะคะ"})
-    res.redirect('/')
+    res.redirect('/emergency')
 })
 
 router.post("/teacher/login",(req,res)=>{
@@ -240,8 +237,8 @@ router.post("/update", (req,res)=>{
     if(req.body.Temp >= 38){
         SendBy = "อนุมัติโดยระบบ"
     }else{
-        client.pushMessage(to='U27b408af15934b6d93a487db9229ee0e',{type:"text",text:`มีการขอยาเข้ามา \n กรุณาตรวจสอบและพิจารณาการให้ยาได้ที่ \nhttps://liff.line.me/2000223015-BYgnOXy0`})
         SendBy = "รอครูอนุมัติ"
+        fun.update_nofi()
     }
     if(userby == "Student"){
         StudentData.findOne({"StudentNumber":studentnumber}).then((result) => {
@@ -269,6 +266,7 @@ router.post("/update", (req,res)=>{
                     date:DateTime.now().toFormat(`dd/MM/${DateTime.now().year + 543}`)},
             })
             if(req.body.Temp >= 38){client.pushMessage(to=userid,{type:"text",text:`${result.StudentName}\nรหัสของคุณคือ : ${data.Detail.Serial} \nสามารถนำไปกรอกได้ที่ตู้กดยาอัจฉริยะที่หน้าห้องพยาบาล`})}
+            else{client.pushMessage(to=userid,{type:"text",text:`คุณครูได้ทราบเรื่องการขอรับยาเรียบร้อยแล้ว\nกรุณารอการยืนยันจากคุณครูสักครู่นะคะ...`})}
             Data.save(data)
             console.log(JSON.stringify({MSG:"Data has saved", DateAndTime : new Date().toLocaleString(), DataIs:data}))
         })

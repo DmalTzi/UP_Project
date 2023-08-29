@@ -1,6 +1,47 @@
 const Data = require("../model/Data")
+const dotenv = require("dotenv")
+const env = dotenv.config().parsed
+console.log(env)
 const XLSX = require("xlsx")
-const fs = require('fs')
+const line = require("@line/bot-sdk")
+
+const lineConfig = {
+    channelAccessToken: 'SwhakFdIMPrzb2nN1w/DFTuX65NdrARcT8aJac3/D/doMn1JfbGe4uWOHFKSDaf+uN5GJQILjCwUtpa+BdlyOUzL0K1TxivFKzi5zQ9ZBlDPM2YbvIBev9XzAFB9701cr6F46Iri/k2RZiTp/CT6JwdB04t89/1O/w1cDnyilFU=',
+    channelSecret: '830439d66d164630bc8cc7dcba3d215b'
+}
+
+const client = new line.Client(lineConfig)
+
+box_of_admin = ['U27b408af15934b6d93a487db9229ee0e', 'U27b2b093b9df4bd104b10bcc79925ae0', 'U91a4edde79f7554d4438dddf30c83a65']
+
+
+
+async function appointment_nofi(){
+    for(let i = 0; i < box_of_admin.length; i++){
+        let data = new Promise(resolve =>{
+            resolve(box_of_admin[i])
+        })
+        client.pushMessage(to=await data,{type:"text",text:`การแจ้งขอนัดพบ \nคาบเรียนที่ : ${req.body.ClassPromise} \nของวันที่ : ${req.body.DatePromise}`})
+    }
+}
+
+async function emergency_nofi(){
+    for(let i = 0; i < box_of_admin.length; i++){
+        let data = new Promise(resolve =>{
+            resolve(box_of_admin[i])
+        })
+    client.pushMessage(to=await data,{type:"text",text:`มีเหตุด่วน!!! \nชื่อ : ${req.body.EmergencyName} ได้แจ้งเหตุด่วน \nเบอร์ติดต่อ : ${req.body.Tel} \nสถานที่เกิดเหตุ : ${req.body.WhereEvergency} \nอาการของผู้ประสบเหตุ : ${req.body.WhatHappen}`})
+    }
+}
+
+async function update_nofi(){
+    for(let i = 0; i < box_of_admin.length; i++){
+        let data = new Promise(resolve =>{
+            resolve(box_of_admin[i])
+        })
+        client.pushMessage(to=await data,{type:"text",text:`มีการขอยาเข้ามา \n กรุณาตรวจสอบและพิจารณาการให้ยาได้ที่ \nhttps://liff.line.me/2000223015-BYgnOXy0`})
+    }
+}
 
 function random_serial(){
     console.log("i'm in random")
@@ -88,7 +129,7 @@ async function fetchData() {
     });
 }
 
-module.exports = {formatDate, random_serial, fetchData}
+module.exports = {formatDate, random_serial, fetchData, update_nofi, emergency_nofi, appointment_nofi}
 
 
 

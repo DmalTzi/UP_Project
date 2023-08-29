@@ -29,7 +29,7 @@ let dataSchema = mongoose.Schema({
     Temp:Number,
     Date_poo:String,
     Time_poo:String,
-    Poo_time:Number,
+    Poo_time:String,
     Detail:{
         UserBy:String,
         Serial:Number,
