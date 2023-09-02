@@ -6,13 +6,13 @@ const XLSX = require("xlsx")
 const line = require("@line/bot-sdk")
 
 const lineConfig = {
-    channelAccessToken: 'SwhakFdIMPrzb2nN1w/DFTuX65NdrARcT8aJac3/D/doMn1JfbGe4uWOHFKSDaf+uN5GJQILjCwUtpa+BdlyOUzL0K1TxivFKzi5zQ9ZBlDPM2YbvIBev9XzAFB9701cr6F46Iri/k2RZiTp/CT6JwdB04t89/1O/w1cDnyilFU=',
-    channelSecret: '830439d66d164630bc8cc7dcba3d215b'
+    channelAccessToken: env.ACCESS_TOKEN,
+    channelSecret: env.SECRET_TOKEN
 }
 
 const client = new line.Client(lineConfig)
 
-box_of_admin = ['U27b408af15934b6d93a487db9229ee0e', 'U27b2b093b9df4bd104b10bcc79925ae0', 'U91a4edde79f7554d4438dddf30c83a65']
+box_of_admin = ['']
 
 
 

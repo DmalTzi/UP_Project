@@ -10,7 +10,7 @@ const TeacherData = require('../model/TeacherData')
 const { DateTime } = require('luxon');
 const XLSX = require("xlsx")
 
-    const lineConfig = {
+const lineConfig = {
     channelAccessToken: env.ACCESS_TOKEN,
     channelSecret: env.SECRET_TOKEN
 }

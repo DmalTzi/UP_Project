@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 
 // connect mongodb alats
-const mongodburl = "mongodb+srv://hdrproject:50230@cluster0.ktm1unb.mongodb.net/?retryWrites=true&w=majority"
+const mongodburl = "mongodburl"
 
 mongoose.set('strictQuery', true);
 

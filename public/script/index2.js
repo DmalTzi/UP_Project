@@ -1,4 +1,4 @@
-const liffId = '2000223015-qMmJlpzN'
+const liffId = ''
 let userId = ''
 
 function main(){
@@ -10,7 +10,7 @@ function main(){
         }
         liff.getProfile().then(profile =>{
             userId = profile.userId
-            const result = axios.post("https://hdrproject.onrender.com/api/liff/login", {
+            const result = axios.post("https://localhost:2000/api/liff/login", {
                 userId:userId
             })
             // window.location.href = "/appointment";
